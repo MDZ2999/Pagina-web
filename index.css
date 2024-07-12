@@ -1,0 +1,85 @@
+/* Media queries para dispositivos móviles */
+@media (max-width: 768px) {
+    .nav-links,
+    .search-container {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: flex;
+    }
+
+    .mobile-menu.show {
+        display: flex;
+    }
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    background: url('hero-bg.jpg') no-repeat center center/cover;
+    height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero .hero-content {
+    color: #fff;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+/* Sección de cuartos */
+.rooms {
+    padding: 20px;
+    text-align: center;
+}
+
+.rooms h2 {
+    margin-bottom: 20px;
+}
+
+.room-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.room-item {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 300px;
+    text-align: center;
+}
+
+.room-item img {
+    width: 100%;
+    height: auto;
+}
+
+.room-info {
+    padding: 10px;
+}
+
+/* Asegurar que todas las secciones están ocultas por defecto */
+.section {
+    display: none;
+    min-height: 704px;
+}
+
+/* Mostrar la sección de inicio por defecto */
+.section#inicio {
+    display: block;
+}
+
+/* Estilos para el enlace activo */
+.nav-links li a.active, .nav-links li a:hover {
+    color: #FFFFFF;    
+    background-color: #9191BD;
+}

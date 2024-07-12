@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Habitación</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Encabezado -->
+    <header>
+        <div class="menu-container">
+            <div class="menu-button">
+                <button class="menu-toggle" aria-label="Toggle Menu">
+                    <span class="menu-icons">
+                        <span class="menu-icon"></span>
+                        <span class="menu-icon"></span>
+                        <span class="menu-icon"></span>
+                    </span>
+                </button>
+            </div>
+        </div>
+        <div class="header-left">
+            <div class="logo-container">
+                <h1 class="logo-text">MI HABITACIÓN</h1>
+                <div class="header-logo">
+                    <img src="img/logo.png" alt="Logo" class="logo">
+                </div>
+            </div> 
+        </div>
+        <div class="header-center">
+            <nav class="navbar">
+                <ul class="nav-links">
+                    <li><a data-section="inicio" href="#inicio" id="inicio-link">Inicio</a></li>
+                    <li><a data-section="perfil" href="#perfil">Perfil</a></li>
+                    <li><a data-section="publicar" href="#publicar">Publicar</a></li>
+                    <li><a data-section="acerca" href="#acerca">Acerca de</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-right">
+            <div class="search-container">
+                <input type="text" placeholder="🔍︎     Search">
+            </div>
+        </div>
+        <div class="mobile-menu">
+            <h2 class="menu-text">Menú</h2>
+            <ul>
+                <li><a href="#">Perfil</a></li>
+                <li><a href="#">Configuración</a></li>
+                <li><a href="#">Política</a></li>
+                <li><a href="#">Herramientas</a></li>
+                <li class="menu-footer"><a href="#">Cerrar sesión</a></li>
+            </ul>
+        </div>
+    </header>
+    
+    <!-- Distintos contenedores -->
+    <section class="section" id="inicio">        <!-- Contenido de la sección Inicio -->
+        <!-- Imagen de fondo y título -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Habitaciones “El Nogal”</h1>
+            </div>
+        </section>
+        <!-- Sección de Cuartos -->
+        <section class="rooms">
+            <h2>Cuartos</h2>
+            <div class="room-gallery">
+                <div class="room-item">
+                    <img src="room1.jpg" alt="Cuarto 1">
+                    <div class="room-info"></div>
+                </div>
+                <div class="room-item">
+                    <img src="room2.jpg" alt="Cuarto 2">
+                    <div class="room-info"></div>
+                </div>
+                <div class="room-item">
+                    <img src="room3.jpg" alt="Cuarto 3">
+                    <div class="room-info"></div>
+                </div>
+                <div class="room-item">
+                    <img src="room4.jpg" alt="Cuarto 4">
+                    <div class="room-info"></div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+    <section class="section" id="perfil">        <!-- Contenido de la sección Perfil -->
+        <!-- Button trigger modal -->
+        <button
+            type="button"
+            class="btn btn-primary btn-lg"
+            data-bs-toggle="modal"
+            data-bs-target="#modalId"
+        >
+            Launch
+        </button>
+        
+        <!-- Modal -->
+        <div
+            class="modal fade"
+            id="modalId"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="modalTitleId"
+            aria-hidden="true"
+        >
+            <div
+                class="modal-dialog modal-sm modal-fullscreen"
+                role="document"
+            >
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalTitleId">
+                            Modal title
+                        </h5>
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                        ></button>
+                    </div>
+                    <div class="modal-body">Body</div>
+                    <div class="modal-footer">
+                        <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                        >
+                            Close
+                        </button>
+                        <button type="button" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </section>
+    
+    <section class="section" id="publicar">        <!-- Contenido de la sección Publicar -->
+    </section>
+
+    <section class="section" id="acerca">        <!-- Contenido de la sección Acerca de -->
+    </section>
+
+    <!--Fin de los contenedores-->
+
+    <!-- Pie de página -->
+    <footer class="footer">
+        <div class="footer-left">
+            <h2>MI HABITACIÓN</h2>
+            <div class="footer-logo">
+                <img src="img/logo.png" alt="Logo">
+            </div>
+        </div>
+        <div class="footer-center">
+        </div>
+        <div class="footer-right">
+            <img src="img/instagram.png" alt="instagram Logo">
+            <img src="img/whatsapp.png" alt="whatsapp Logo">
+            <img src="img/Facebook.png" alt="Facebook Logo">
+            <img src="img/gmail.png" alt="Gmail Logo">
+        </div>
+    </footer>   
+
+    <script src="menu.js"></script>
+    <script src="navbar.js"></script>
+</body>
+</html>
