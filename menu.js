@@ -6,29 +6,49 @@ document.addEventListener("DOMContentLoaded", function() {
     const mobileMenu = document.querySelector('.mobile-menu');
     // Selecciona el contenedor del menú
     const menuContainer = document.querySelector('.menu-container');
+    // Selecciona el overlay
+    const menuOverlay = document.querySelector('.menu-overlay');
+
+    // Función para mostrar el menú y el overlay
+    function showMenu() {
+        mobileMenu.classList.add('show');
+        menuToggle.classList.add('active');
+        menuOverlay.classList.add('show');
+        menuToggle.querySelectorAll('.menu-icon').forEach(icon => {
+            icon.style.backgroundColor = 'black';
+        });
+        menuContainer.classList.add('fixed');
+    }
+
+    // Función para ocultar el menú y el overlay
+    function hideMenu() {
+        mobileMenu.classList.remove('show');
+        menuToggle.classList.remove('active');
+        menuOverlay.classList.remove('show');
+        menuToggle.querySelectorAll('.menu-icon').forEach(icon => {
+            icon.style.backgroundColor = 'white';
+        });
+        menuContainer.classList.remove('fixed');
+    }
 
     // Añade un evento de clic al botón de menú
     menuToggle.addEventListener('click', function() {
-        // Alterna la clase 'show' en el menú móvil para mostrarlo o ocultarlo
-        mobileMenu.classList.toggle('show');
-        // Alterna la clase 'active' en el botón de menú para indicar su estado activo o inactivo
-        menuToggle.classList.toggle('active');
-
-        // Verifica si el menú móvil está mostrándose
         if (mobileMenu.classList.contains('show')) {
-            // Si está mostrándose, cambia el color de fondo de los iconos del menú a negro
-            menuToggle.querySelectorAll('.menu-icon').forEach(icon => {
-                icon.style.backgroundColor = 'black';
-            });
-            // Añade la clase 'fixed' al contenedor del menú para mantenerlo fijo en la pantalla
-            menuContainer.classList.add('fixed');
+            hideMenu();
         } else {
-            // Si no está mostrándose, cambia el color de fondo de los iconos del menú a blanco
-            menuToggle.querySelectorAll('.menu-icon').forEach(icon => {
-                icon.style.backgroundColor = 'white';
-            });
-            // Remueve la clase 'fixed' del contenedor del menú para que no esté fijo en la pantalla
-            menuContainer.classList.remove('fixed');
+            showMenu();
+        }
+    });
+
+    // Añade un evento de clic al overlay para ocultar el menú al hacer clic fuera de él
+    menuOverlay.addEventListener('click', function() {
+        hideMenu();
+    });
+
+    // Previene la interacción con el contenido de la página cuando el menú está desplegado
+    document.addEventListener('click', function(event) {
+        if (!mobileMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+            hideMenu();
         }
     });
 });
