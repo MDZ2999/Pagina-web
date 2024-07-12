@@ -77,9 +77,3 @@
 .section#inicio {
     display: block;
 }
-
-/* Estilos para el enlace activo */
-.nav-links li a.active, .nav-links li a:hover {
-    color: #FFFFFF;    
-    background-color: #9191BD;
-}
