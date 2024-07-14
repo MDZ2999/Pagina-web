@@ -59,98 +59,100 @@
     <!-- Overlay -->
     <div class="menu-overlay"></div> 
     
-    <!-- Distintos contenedores -->
-    <section class="section" id="inicio">        <!-- Contenido de la sección Inicio -->
-        <!-- Imagen de fondo y título -->
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Habitaciones “El Nogal”</h1>
-            </div>
+    <div class="container-section">
+            <!-- Distintos contenedores -->
+        <section class="section" id="inicio">        <!-- Contenido de la sección Inicio -->
+            <!-- Imagen de fondo y título -->
+            <section class="hero">
+                <div class="hero-content">
+                    <h1>Habitaciones “El Nogal”</h1>
+                </div>
+            </section>
+            <!-- Sección de Cuartos -->
+            <section class="rooms">
+                <h2>Cuartos</h2>
+                <div class="room-gallery">
+                    <div class="room-item">
+                        <img src="room1.jpg" alt="Cuarto 1">
+                        <div class="room-info"></div>
+                    </div>
+                    <div class="room-item">
+                        <img src="room2.jpg" alt="Cuarto 2">
+                        <div class="room-info"></div>
+                    </div>
+                    <div class="room-item">
+                        <img src="room3.jpg" alt="Cuarto 3">
+                        <div class="room-info"></div>
+                    </div>
+                    <div class="room-item">
+                        <img src="room4.jpg" alt="Cuarto 4">
+                        <div class="room-info"></div>
+                    </div>
+                </div>
+            </section>
         </section>
-        <!-- Sección de Cuartos -->
-        <section class="rooms">
-            <h2>Cuartos</h2>
-            <div class="room-gallery">
-                <div class="room-item">
-                    <img src="room1.jpg" alt="Cuarto 1">
-                    <div class="room-info"></div>
-                </div>
-                <div class="room-item">
-                    <img src="room2.jpg" alt="Cuarto 2">
-                    <div class="room-info"></div>
-                </div>
-                <div class="room-item">
-                    <img src="room3.jpg" alt="Cuarto 3">
-                    <div class="room-info"></div>
-                </div>
-                <div class="room-item">
-                    <img src="room4.jpg" alt="Cuarto 4">
-                    <div class="room-info"></div>
-                </div>
-            </div>
-        </section>
-    </section>
 
-    <section class="section" id="perfil">        <!-- Contenido de la sección Perfil -->
-        <!-- Button trigger modal -->
-        <button
-            type="button"
-            class="btn btn-primary btn-lg"
-            data-bs-toggle="modal"
-            data-bs-target="#modalId"
-        >
-            Launch
-        </button>
-        
-        <!-- Modal -->
-        <div
-            class="modal fade"
-            id="modalId"
-            tabindex="-1"
-            role="dialog"
-            aria-labelledby="modalTitleId"
-            aria-hidden="true"
-        >
-            <div
-                class="modal-dialog modal-sm modal-fullscreen"
-                role="document"
+        <section class="section" id="perfil">        <!-- Contenido de la sección Perfil -->
+            <!-- Button trigger modal -->
+            <button
+                type="button"
+                class="btn btn-primary btn-lg"
+                data-bs-toggle="modal"
+                data-bs-target="#modalId"
             >
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modalTitleId">
-                            Modal title
-                        </h5>
-                        <button
-                            type="button"
-                            class="btn-close"
-                            data-bs-dismiss="modal"
-                            aria-label="Close"
-                        ></button>
-                    </div>
-                    <div class="modal-body">Body</div>
-                    <div class="modal-footer">
-                        <button
-                            type="button"
-                            class="btn btn-secondary"
-                            data-bs-dismiss="modal"
-                        >
-                            Close
-                        </button>
-                        <button type="button" class="btn btn-primary">Save</button>
+                Launch
+            </button>
+
+            <!-- Modal -->
+            <div
+                class="modal fade"
+                id="modalId"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="modalTitleId"
+                aria-hidden="true"
+            >
+                <div
+                    class="modal-dialog modal-sm modal-fullscreen"
+                    role="document"
+                >
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalTitleId">
+                                Modal title
+                            </h5>
+                            <button
+                                type="button"
+                                class="btn-close"
+                                data-bs-dismiss="modal"
+                                aria-label="Close"
+                            ></button>
+                        </div>
+                        <div class="modal-body">Body</div>
+                        <div class="modal-footer">
+                            <button
+                                type="button"
+                                class="btn btn-secondary"
+                                data-bs-dismiss="modal"
+                            >
+                                Close
+                            </button>
+                            <button type="button" class="btn btn-primary">Save</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        
-    </section>
-    
-    <section class="section" id="publicar">        <!-- Contenido de la sección Publicar -->
-    </section>
 
-    <section class="section" id="acerca">        <!-- Contenido de la sección Acerca de -->
-    </section>
+        </section>
 
-    <!--Fin de los contenedores-->
+        <section class="section" id="publicar">        <!-- Contenido de la sección Publicar -->
+        </section>
+
+        <section class="section" id="acerca">        <!-- Contenido de la sección Acerca de -->
+        </section>
+
+        <!--Fin de los contenedores-->
+    </div>
 
     <!-- Pie de página -->
     <footer class="footer">

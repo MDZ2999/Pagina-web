@@ -66,14 +66,3 @@
 .room-info {
     padding: 10px;
 }
-
-/* Asegurar que todas las secciones están ocultas por defecto */
-.section {
-    display: none;
-    min-height: 704px;
-}
-
-/* Mostrar la sección de inicio por defecto */
-.section#inicio {
-    display: block;
-}
