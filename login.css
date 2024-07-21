@@ -62,23 +62,36 @@
     max-height: 627px;
     height: 380px;
     margin: 0 auto; /* Centra el contenedor en la página */
-    padding-top: 50px;
-    padding-left: 139px;
-    padding-right: 139px;
-    padding-bottom: 117px;
+    padding: 50px 139px 117px 139px;
     background-color: #D9D9D9; /* Color de fondo del contenedor para visibilidad */
     border-radius: 30px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
 
-.login-box form{
+.register-box {
+    width: 100%;
+    max-width: 678px;
+    width: 400px;
+    height: 100%;
+    min-height: 627px;
+    height: 380px;
+    margin: 0 auto; /* Centra el contenedor en la página */
+    padding: 50px 139px 117px 139px;
+    background-color: #D9D9D9; /* Color de fondo del contenedor para visibilidad */
+    border-radius: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    position: relative; /* Necesario para posicionar la alerta correctamente */
+}
+
+.login-box form, .register-box form{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.login-box label {
+.login-box label, .register-box label {
     font-family: Inter;
     font-size: 24px;
     font-weight: 600;
@@ -89,7 +102,7 @@
     text-align: center;
 }
 
-.login-box input, .login-box button {
+.login-box input, .register-box input, .login-box button, .register-box button {
     width: 100%; /* Asegura que el ancho sea el mismo para ambos */
     max-width: 400px;
     height: 40px;
@@ -98,7 +111,7 @@
     border-radius: 8px;
 }
 
-.login-box input {
+.login-box input, .register-box input {
     padding-left: 10px;
     font-family: Inter;
     text-align: left;
@@ -106,7 +119,7 @@
     background: #FFFFFF;
 }
 
-.login-box button {
+.login-box button, .register-box button {
     font-family: Inter;
     text-align: center;
     border: 1px solid #a5a5d1;
@@ -115,11 +128,11 @@
     color: #FFFFFF; 
 }
 
-.login-box button:hover {
+.login-box button:hover , .register-box  button:hover{
     background: #7878A5; /* Color más oscuro para el hover */
 }
 
-.login-box p {
+.login-box p , .register-box p{
     font-family: Inter;
     font-size: 16px;
     font-weight: 400;
@@ -129,7 +142,7 @@
     margin: 10px 0;
 }
 
-.login-box a {
+.login-box a , .register-box a {
     font-family: Inter;
     font-size: 16px;
     font-weight: 400;
@@ -138,11 +151,37 @@
     color: #6a5acd;
 }
 
+.checkbox-container {
+    display: flex;
+    align-items: center;
+}
+.checkbox-container input[type="checkbox"] {
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+    /* Para cambiar el color del checkbox cuando esté seleccionado */
+    &:checked + label {
+        color: #4fb641;
+    }
+    cursor: pointer;
+}
+
+.checkbox-container label {
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: center;
+    font-family: Inter;
+    letter-spacing: -0.01em;
+    color: #000000;
+    padding:10px;
+}
 
 /* Parte Responsiva */
 /* Para pantallas menores de 768px de ancho */
 @media (max-width: 768px) {
-    .login-box {
+    .login-box, .register-box {
         width: 90%;
         height:auto;
         padding: 20px;
@@ -162,7 +201,7 @@
 
 /* Para pantallas menores de 480px de ancho */
 @media (max-width: 480px) {
-    .login-box {
+    .login-box, .register-box {
         width: 100%;
         height: auto;
         padding: 10px;

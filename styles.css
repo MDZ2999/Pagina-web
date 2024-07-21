@@ -126,6 +126,11 @@ header {
 /*!Fin Parte central de la cabeza*/
 
 /**Parte derecha de la cabeza*/
+.search-container {
+    position: relative;
+    margin: 10px; /* Ajusta según necesites */
+}
+
 .search-container input {
     width: 182px;
     height: 40px;
@@ -142,10 +147,15 @@ header {
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
+    color: #828282; /* Color del placeholder */
 }
 /**Fin Parte derecha de la cabeza*/
 
 /*! Boton y Menu desplegable*/
+.no-scroll { /* ?Hace que la pagina no se deslice cuando el menu se abre */
+    overflow: hidden;
+}
+
 .menu-container {
     position: absolute;
     top: 0;

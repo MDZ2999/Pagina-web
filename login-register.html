@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio y Registro</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script><!--Maneja las respuestas AJAX -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script><!--Script de la alerta -->
+    <script src="register.js"></script>
+    <script src="login.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="login-view.js"></script>
+<body>
+    <header class="headerR">
+        <div>
+            <h1>MI HABITACIÓN</h1>
+            <div class="header-logoR">
+                <img src="img/logo.png" alt="Icono">
+            </div>
+        </div>
+    </header>
+
+    <div>
+        <div class="background-image"></div>
+        <div class="containerR">
+            <div class="login-box" id="loginBox">
+                <form id="loginForm" action="login.php" method="post">
+                    <label for="login-correo">Ingresa tu cuenta</label>
+                    <input id="login-correo" name="correo" type="email" placeholder="email@gmail.com" pattern=".{1,50}" title="Hasta 50 caracteres" required>
+                    <input id="login-contrasena" name="contrasena" type="password" placeholder="Ingresa tu contraseña" pattern=".{1,60}" title="Hasta 60 caracteres" required>
+                    <button type="submit">INICIAR SESION</button>
+                    <button type="button" id="showRegisterForm">CREAR CUENTA</button>
+                    <p>By clicking continue, you agree to our <br><a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></p>
+                </form>
+            </div>
+
+            <div class="register-box" id="registerBox" style="display: none;">
+                <form id="registerForm" action="register.php" method="post">
+                    <label for="email">Crea tu cuenta</label>
+                    <input id="nombres" name="nombres" type="text" placeholder="Nombres" pattern=".{1,30}" title="Hasta 30 caracteres" required>
+                    <input id="apellidoP" name="apellidoP" type="text" placeholder="Apellido Paterno" pattern=".{1,15}" title="Hasta 15 caracteres" required>
+                    <input id="apellidoM" name="apellidoM" type="text" placeholder="Apellido Materno" pattern=".{1,15}" title="Hasta 15 caracteres" required>
+                    <input id="correoRegistro" name="correo" type="email" placeholder="Correo" pattern=".{1,50}" title="Hasta 50 caracteres" required>
+                    <input id="contrasenaRegistro" name="contrasena" type="password" placeholder="Contraseña" pattern=".{1,60}" title="Hasta 60 caracteres" required>
+                    <input id="telefono" name="telefono" type="number" placeholder="Telefono" pattern=".{1,19}" title="Hasta 19 caracteres" required>
+                    <button id="createButton" type="submit">CREAR CUENTA</button>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="conditionCheckbox">
+                        <label for="conditionCheckbox">Acepto los Términos y Condiciones</label>
+                    </div>
+                    <p>By clicking continue, you agree to our <br><a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-left">
+            <h2>MI HABITACIÓN</h2>
+            <div class="footer-logo">
+                <img src="img/logo.png" alt="Logo">
+            </div>
+        </div>
+        <div class="footer-center">
+        </div>
+        <div class="footer-right">
+            <img src="img/instagram.png" alt="instagram Logo">
+            <img src="img/whatsapp.png" alt="whatsapp Logo">
+            <img src="img/Facebook.png" alt="Facebook Logo">
+            <img src="img/gmail.png" alt="Gmail Logo">
+        </div>
+    </footer>
+
+</body>
+</html>

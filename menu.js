@@ -1,19 +1,13 @@
-// Espera a que el DOM esté completamente cargado
 document.addEventListener("DOMContentLoaded", function() {
-    // Selecciona el botón de menú
-    const menuToggle = document.querySelector('.menu-toggle');
-    // Selecciona el menú móvil
-    const mobileMenu = document.querySelector('.mobile-menu');
-    // Selecciona el contenedor del menú
-    const menuContainer = document.querySelector('.menu-container');
-    // Selecciona el overlay
-    const menuOverlay = document.querySelector('.menu-overlay');
-    // Selecciona todos los enlaces de navegación
-    const navLinks = document.querySelectorAll('.nav-links li a');
-    // Selecciona el contenedor de los enlaces de navegación
-    const navLinksContainer = document.querySelector('.nav-links');
+    const menuToggle = document.querySelector('.menu-toggle'); // Selecciona el botón de menú
+    const mobileMenu = document.querySelector('.mobile-menu'); // Selecciona el menú móvil
+    const menuContainer = document.querySelector('.menu-container'); // Selecciona el contenedor del menú
+    const menuOverlay = document.querySelector('.menu-overlay'); // Selecciona el overlay
+    const navLinks = document.querySelectorAll('.nav-links li a'); // Selecciona todos los enlaces de navegación
+    const navLinksContainer = document.querySelector('.nav-links'); // Selecciona el contenedor de los enlaces de navegación
+    const body = document.body; // Selecciona el body
 
-    // Función para mostrar el menú y el overlay
+    // Función para mostrar el menú y congelar la página
     function showMenu() {
         mobileMenu.classList.add('show'); // Muestra el menú móvil
         menuToggle.classList.add('active'); // Activa el botón de menú
@@ -28,9 +22,17 @@ document.addEventListener("DOMContentLoaded", function() {
             link.classList.add('disabled');
         });
         navLinksContainer.classList.add('no-hover'); // Añade la clase no-hover al contenedor de los enlaces de navegación
+
+        // Congelar el desplazamiento de la página
+        body.classList.add('no-scroll');
+        
+        // Congelar el buscador
+        const searchInput = document.querySelector('.search-container input');
+        searchInput.style.cursor = 'auto'; // Cambia el cursor del buscador a modo default
+        searchInput.disabled = true; // Desactiva el input del buscador
     }
 
-    // Función para ocultar el menú y el overlay
+    // Función para ocultar el menú y restaurar la página
     function hideMenu() {
         mobileMenu.classList.remove('show'); // Oculta el menú móvil
         menuToggle.classList.remove('active'); // Desactiva el botón de menú
@@ -45,9 +47,17 @@ document.addEventListener("DOMContentLoaded", function() {
             link.classList.remove('disabled');
         });
         navLinksContainer.classList.remove('no-hover'); // Remueve la clase no-hover del contenedor de los enlaces de navegación
+
+        // Reactivar el desplazamiento de la página
+        body.classList.remove('no-scroll');
+
+        // Reactivar el buscador
+        const searchInput = document.querySelector('.search-container input');
+        searchInput.style.cursor = ''; // Restablece el cursor del buscador
+        searchInput.disabled = false; // Activa el input del buscador
     }
 
-    // Añade un evento de clic al botón de menú
+    // Evento de clic para el botón de menú
     menuToggle.addEventListener('click', function() {
         if (mobileMenu.classList.contains('show')) {
             hideMenu(); // Oculta el menú si ya está mostrando
@@ -56,15 +66,16 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 
-    // Añade un evento de clic al overlay para ocultar el menú al hacer clic fuera de él
+    // Evento de clic para el overlay para ocultar el menú
     menuOverlay.addEventListener('click', function() {
         hideMenu(); // Oculta el menú y el overlay
     });
 
-    // Previene la interacción con el contenido de la página cuando el menú está desplegado
+    // Oculta el menú si se hace clic fuera de él
     document.addEventListener('click', function(event) {
         if (!mobileMenu.contains(event.target) && !menuToggle.contains(event.target)) {
-            hideMenu(); // Oculta el menú y el overlay si se hace clic fuera del menú y del botón de menú
+            hideMenu();
         }
     });
+
 });

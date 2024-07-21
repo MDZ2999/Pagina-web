@@ -6,6 +6,8 @@
     <title>Mi Habitación</title>
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="styles.css">
+    <script src="menu.js"></script>
+    <script src="navbar.js"></script>
 </head>
 <body>
     <!-- Encabezado -->
@@ -41,7 +43,9 @@
         </div>
         <div class="header-right">
             <div class="search-container">
-                <input type="text" placeholder="🔍︎     Search">
+                <form action="search.php">
+                    <input type="text" placeholder="🔍︎     Search" id="cuarto" name="cuarto">
+                </form>
             </div>
         </div>
         <div class="mobile-menu">
@@ -172,7 +176,5 @@
         </div>
     </footer>   
 
-    <script src="menu.js"></script>
-    <script src="navbar.js"></script>
 </body>
 </html>
