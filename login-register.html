@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio y Registro</title>
-    <link rel="stylesheet" href="login.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/styles.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script><!--Maneja las respuestas AJAX -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script><!--Script de la alerta -->
-    <script src="register.js"></script>
-    <script src="login.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="login-view.js"></script>
+    <script src="js/register.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/login-view.js"></script>
 <body>
     <header class="headerR">
         <div>
@@ -26,7 +25,7 @@
         <div class="background-image"></div>
         <div class="containerR">
             <div class="login-box" id="loginBox">
-                <form id="loginForm" action="login.php" method="post">
+                <form id="loginForm" action="php/login.php" method="post">
                     <label for="login-correo">Ingresa tu cuenta</label>
                     <input id="login-correo" name="correo" type="email" placeholder="email@gmail.com" pattern=".{1,50}" title="Hasta 50 caracteres" required>
                     <input id="login-contrasena" name="contrasena" type="password" placeholder="Ingresa tu contraseña" pattern=".{1,60}" title="Hasta 60 caracteres" required>
@@ -37,7 +36,7 @@
             </div>
 
             <div class="register-box" id="registerBox" style="display: none;">
-                <form id="registerForm" action="register.php" method="post">
+                <form id="registerForm" action="php/register.php" method="post">
                     <label for="email">Crea tu cuenta</label>
                     <input id="nombres" name="nombres" type="text" placeholder="Nombres" pattern=".{1,30}" title="Hasta 30 caracteres" required>
                     <input id="apellidoP" name="apellidoP" type="text" placeholder="Apellido Paterno" pattern=".{1,15}" title="Hasta 15 caracteres" required>

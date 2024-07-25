@@ -4,10 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Habitación</title>
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="styles.css">
-    <script src="menu.js"></script>
-    <script src="navbar.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script><!--Script de la alerta -->
+    <script src="js/menu.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/check_session.js"></script>
+    <script src="js/logout_handling.js"></script>
 </head>
 <body>
     <!-- Encabezado -->
@@ -55,7 +59,7 @@
                 <li><a href="#">Configuración</a></li>
                 <li><a href="#">Política</a></li>
                 <li><a href="#">Herramientas</a></li>
-                <li class="menu-footer"><a href="#">Cerrar sesión</a></li>
+                <li class="menu-footer"><a id="logoutButton" href="">Cerrar sesión</a></li>
             </ul>
         </div>
     </header>
@@ -67,6 +71,25 @@
             <!-- Distintos contenedores -->
         <section class="section" id="inicio">        <!-- Contenido de la sección Inicio -->
             <!-- Imagen de fondo y título -->
+            <div
+                class="alert alert-primary alert-dismissible fade show"
+                role="alert"
+            >
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert"
+                    aria-label="Close"
+                ></button>
+            
+                <strong>Holy guacamole!</strong> You should check in on some of
+                those fields below.
+            </div>
+            
+        </section>
+
+        <section class="section" id="perfil">        <!-- Contenido de la sección Perfil -->
+            
             <section class="hero">
                 <div class="hero-content">
                     <h1>Habitaciones “El Nogal”</h1>
@@ -94,65 +117,31 @@
                     </div>
                 </div>
             </section>
-        </section>
-
-        <section class="section" id="perfil">        <!-- Contenido de la sección Perfil -->
-            <!-- Button trigger modal -->
-            <button
-                type="button"
-                class="btn btn-primary btn-lg"
-                data-bs-toggle="modal"
-                data-bs-target="#modalId"
-            >
-                Launch
-            </button>
-
-            <!-- Modal -->
-            <div
-                class="modal fade"
-                id="modalId"
-                tabindex="-1"
-                role="dialog"
-                aria-labelledby="modalTitleId"
-                aria-hidden="true"
-            >
-                <div
-                    class="modal-dialog modal-sm modal-fullscreen"
-                    role="document"
-                >
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="modalTitleId">
-                                Modal title
-                            </h5>
-                            <button
-                                type="button"
-                                class="btn-close"
-                                data-bs-dismiss="modal"
-                                aria-label="Close"
-                            ></button>
-                        </div>
-                        <div class="modal-body">Body</div>
-                        <div class="modal-footer">
-                            <button
-                                type="button"
-                                class="btn btn-secondary"
-                                data-bs-dismiss="modal"
-                            >
-                                Close
-                            </button>
-                            <button type="button" class="btn btn-primary">Save</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
         </section>
 
         <section class="section" id="publicar">        <!-- Contenido de la sección Publicar -->
+            <a
+                href="#"
+                class="btn btn-primary active"
+                role="button"
+                >Button</a
+            >
+            
         </section>
 
         <section class="section" id="acerca">        <!-- Contenido de la sección Acerca de -->
+            <!-- You can dismiss by clicking somewhere -->
+            <a
+                tabindex="0"
+                class="btn btn-secondary"
+                data-bs-toggle="popover"
+                data-bs-trigger="focus"
+                title="Popup title"
+                data-bs-content="Popup content"
+                >Trigger</a
+            >
+            
         </section>
 
         <!--Fin de los contenedores-->

@@ -49,7 +49,7 @@
     position: absolute; /* Posiciona la imagen de fondo de manera absoluta dentro del contenedor */
     width: 100%; /* Cubre todo el ancho */
     height: 60%; /* Cubre solo la mitad del contenedor */
-    background: url('img/cuarto.jpg') no-repeat center center; /* Imagen de fondo centrada */
+    background: url('../img/cuarto.jpg') no-repeat center center; /* Imagen de fondo centrada */
     background-size: cover; /* La imagen de fondo cubre todo el área asignada */
     z-index: -1; /* Coloca la imagen detrás del contenido */
 }

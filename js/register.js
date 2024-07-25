@@ -32,7 +32,7 @@ $(document).ready(function() {
             // Si el checkbox está marcado, realiza una solicitud AJAX
             $.ajax({
                 type: 'POST', // Tipo de solicitud HTTP (POST)
-                url: 'register.php', // URL del servidor donde se enviarán los datos
+                url: 'php/register.php', // URL del servidor donde se enviarán los datos
                 data: formData, // Datos que se enviarán al servidor
                 dataType: 'json', // Tipo de datos que se espera del servidor
                 encode: true,
