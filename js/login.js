@@ -25,9 +25,7 @@ $(document).ready(function() {
                     }).then((result) => {
                         // Después de cerrar el mensaje de éxito
                         if (result.isConfirmed) {
-                            const requestedSection = localStorage.getItem('requestedSection') || 'inicio';
-                            localStorage.removeItem('requestedSection'); // Limpia la sección solicitada almacenada en localStorage
-                            window.location.href = `index.html#${requestedSection}`; // Redirige al usuario a la sección deseada o al inicio si no se especificó una
+                            window.location.href = `index.html`; // Redirige al usuario a la sección deseada o al inicio si no se especificó una
                         }
                     });
                 } else {

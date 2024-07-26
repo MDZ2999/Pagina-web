@@ -1,16 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const logoutButton = document.getElementById('logoutButton'); // Asegúrate de que el botón de cierre de sesión tenga este ID
+    const logoutButton = document.getElementById('logoutButton');
 
-    logoutButton.addEventListener('click', function() {
+    logoutButton.addEventListener('click', function(event) {
+        event.preventDefault();
         $.ajax({
             type: 'POST',
-            url: 'php/logout.php', // Asegúrate de que la ruta sea correcta
+            url: 'php/logout.php',
             success: function() {
-                // Limpia el estado de autenticación local
                 localStorage.removeItem('isLoggedIn');
-                sessionStorage.removeItem('activeSectionId');
-
-                // Redirige al usuario al inicio o página de login
+                sessionStorage.clear();
                 window.location.href = 'index.html';
             },
             error: function() {

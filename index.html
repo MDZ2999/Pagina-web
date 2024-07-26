@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script><!--Script de la alerta -->
     <script src="js/menu.js"></script>
     <script src="js/navbar.js"></script>
-    <script src="js/check_session.js"></script>
+    <script src="js/check_session.js"></script>  <!-- Script para comprobar si hay una sesión iniciada -->
     <script src="js/logout_handling.js"></script>
 </head>
 <body>
@@ -71,52 +71,82 @@
             <!-- Distintos contenedores -->
         <section class="section" id="inicio">        <!-- Contenido de la sección Inicio -->
             <!-- Imagen de fondo y título -->
-            <div
-                class="alert alert-primary alert-dismissible fade show"
-                role="alert"
-            >
-                <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="alert"
-                    aria-label="Close"
-                ></button>
-            
-                <strong>Holy guacamole!</strong> You should check in on some of
-                those fields below.
+            <div class="headerI">
+                <button class="nav-button left-button">&lt;</button>
+                <div class="headerI-content">
+                    <h1>Habitaciones “El Nogal”</h1>
+                </div>
+                <button class="nav-button right-button">&gt;</button>
             </div>
             
         </section>
-
-        <section class="section" id="perfil">        <!-- Contenido de la sección Perfil -->
-            
-            <section class="hero">
-                <div class="hero-content">
-                    <h1>Habitaciones “El Nogal”</h1>
-                </div>
-            </section>
-            <!-- Sección de Cuartos -->
-            <section class="rooms">
-                <h2>Cuartos</h2>
-                <div class="room-gallery">
-                    <div class="room-item">
-                        <img src="room1.jpg" alt="Cuarto 1">
-                        <div class="room-info"></div>
-                    </div>
-                    <div class="room-item">
-                        <img src="room2.jpg" alt="Cuarto 2">
-                        <div class="room-info"></div>
-                    </div>
-                    <div class="room-item">
-                        <img src="room3.jpg" alt="Cuarto 3">
-                        <div class="room-info"></div>
-                    </div>
-                    <div class="room-item">
-                        <img src="room4.jpg" alt="Cuarto 4">
-                        <div class="room-info"></div>
+        <!-- Contenido de la sección Perfil -->
+        <section class="section" id="perfil">
+            <div class="headerP">
+                <div class="headerP-content">
+                    <img src="img/avatar.png" alt="Avatar" class="avatar">
+                    <div class="text-content">
+                        <h1>Habitaciones “El Nogal”</h1>
+                        <p>“Siéntete como en tu casa”</p>
                     </div>
                 </div>
-            </section>
+            </div>
+    
+            <div class="owner-section">
+                <div class="owner-info">
+                    <h3>Datos del Propietario</h3>
+                    <p>Nombre:</p>
+                    <p>Teléfono:</p>
+                    <p>Dirección:</p>
+                    <p>Correo Electrónico:</p>
+                </div>
+                <div class="rooms-section">
+                    <div class="room">
+                        <img src="img/cama.jpg" alt="Room 1" class="room-image">
+                        <div class="room-details">
+                            <h4>Recamara 1</h4>
+                            <p>Baño: Sí</p>
+                            <p>Accesorios: Cama, silla y mesa de escritorio</p>
+                            <p>Conexión a internet: Sí</p>
+                            <p>Calefacción: Sí</p>
+                            <p>Aire acondicionado: Sí</p>
+                        </div>
+                    </div>
+                    <div class="room">
+                        <img src="img/cama.jpg" alt="Room 2" class="room-image">
+                        <div class="room-details">
+                            <h4>Recamara 1</h4>
+                            <p>Baño: Sí</p>
+                            <p>Accesorios: Cama, silla y mesa de escritorio</p>
+                            <p>Conexión a internet: Sí</p>
+                            <p>Calefacción: Sí</p>
+                            <p>Aire acondicionado: Sí</p>
+                        </div>
+                    </div>
+                    <div class="room">
+                        <img src="img/cama.jpg" alt="Room 3" class="room-image">
+                        <div class="room-details">
+                            <h4>Recamara 1</h4>
+                            <p>Baño: Sí</p>
+                            <p>Accesorios: Cama, silla y mesa de escritorio</p>
+                            <p>Conexión a internet: Sí</p>
+                            <p>Calefacción: Sí</p>
+                            <p>Aire acondicionado: Sí</p>
+                        </div>
+                    </div>
+                    <div class="room">
+                        <img src="img/cama.jpg" alt="Room 4" class="room-image">
+                        <div class="room-details">
+                            <h4>Recamara 1</h4>
+                            <p>Baño: Sí</p>
+                            <p>Accesorios: Cama, silla y mesa de escritorio</p>
+                            <p>Conexión a internet: Sí</p>
+                            <p>Calefacción: Sí</p>
+                            <p>Aire acondicionado: Sí</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </section>
 

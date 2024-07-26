@@ -1,68 +1,181 @@
-/* Media queries para dispositivos móviles */
-@media (max-width: 768px) {
-    .nav-links,
-    .search-container {
-        display: none;
-    }
-
-    .menu-toggle {
-        display: flex;
-    }
-
-    .mobile-menu.show {
-        display: flex;
-    }
-}
-
-/* Hero Section */
-.hero {
-    position: relative;
-    background: url('hero-bg.jpg') no-repeat center center/cover;
-    height: 60vh;
+/* *Esto es del Inicio */
+.headerI {
+    background-image: url('../img/banner.png'); /* Actualiza esta ruta a la imagen de fondo */
+    background-size: cover;
+    background-position: center;
+    height: 254px; /* Ajusta la altura según sea necesario */
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    position: relative;
 }
 
-.hero .hero-content {
-    color: #fff;
+.headerI::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Sombra para mejorar la legibilidad del texto */
+    z-index: 1;
+}
+
+.headerI-content {
+    z-index: 2; /* Asegura que el contenido esté por encima de la sombra */
+    color: white;
     text-align: center;
-    background: rgba(0, 0, 0, 0.5);
-    padding: 20px;
-    border-radius: 10px;
+    width: 100%;
 }
 
-/* Sección de cuartos */
-.rooms {
-    padding: 20px;
-    text-align: center;
+.headerI h1 {
+    margin: 0;
+    font-size: 2em;
+    color: white;
 }
 
-.rooms h2 {
-    margin-bottom: 20px;
+.nav-button {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 2em;
+    z-index: 2; /* Asegura que los botones estén por encima de la sombra */
+    cursor: pointer;
 }
 
-.room-gallery {
+.left-button {
+    margin-right: auto;
+}
+
+.right-button {
+    margin-left: auto;
+}
+/* *Fin de lo del Inicio */
+
+/*!Esto es del perfil */
+.headerP {
+    background-image: url('../img/banner.png'); /* Actualiza esta ruta a la imagen de fondo */
+    background-size: cover;
+    background-position: center;
+    height: 254px; /* Ajusta la altura según sea necesario */
+    position: relative;
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
     justify-content: center;
+    align-items: center; 
 }
 
-.room-item {
+.headerP::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Ajusta la opacidad para mejor legibilidad */
+    z-index: 1;
+}
+
+.headerP-content {
+    display: flex;
+    align-items: center;
+    z-index: 2; /* Asegura que el contenido esté por encima de la sombra */
+    width: 100%; /* Asegura que abarque todo el ancho del header */
+    padding-left: 56px; /* Separación del borde izquierdo */
+}
+
+.avatar {
+    width: Hug (231px)px;
+    height: Fixed (224px)px;
+    border-radius: 50%;
+    border: 1px solid white;
+    margin-right: 107px; /* Separación entre el avatar y el texto */
+}
+
+.text-content {
+    color: white; /* Asegura que el texto sea blanco */
+    text-align: center;
+}
+
+.text-content h1 {
+    font-family: Judson;
+    width: 731px;
+    height: 49px;
+    margin: 0;
+    font-size: 2em;
+}
+
+.text-content p {
+    font-family: Judson;
+    width: 738px;
+    height: 52px;
+    margin: 5px 0 0;
+    font-size: 1.2em;
+}
+
+.owner-section {
+    display: flex;
+    padding: 20px;
+}
+
+.owner-info {
+    padding: 20px;
+    background-color: #e0e0e0;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+    border: 5px solid black;
+    width: 300px;
+    margin-right: 28px;
+}
+
+.owner-info h3 {
+    margin: 0 0 20px;
+    font-size: 1.5em;
+    text-align: center;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.owner-info p {
+    margin: 10px 0;
+    font-size: 1.1em;
+}
+
+.rooms-section {
+    flex: 2;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.room {
+    display: flex;
     background-color: #fff;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
     overflow: hidden;
-    width: 300px;
-    text-align: center;
 }
 
-.room-item img {
-    width: 100%;
+.room-image {
+    width: 234px;
+    height: 141px; 
     height: auto;
+    border-radius: 10px 20px 20px 10px; /* Esquinas específicas */
+    box-shadow: 0 4px 8px rgba(206, 21, 21, 0.1); /* Sombra alrededor de la imagen */
+    border: 6px solid black; /* Borde negro */
 }
 
-.room-info {
+.room-details {
     padding: 10px;
 }
+
+.room-details h4 {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+.room-details p {
+    margin: 5px 0;
+    font-size: 0.9em;
+}
+
+/* !Aqui termina lo del perfil */
