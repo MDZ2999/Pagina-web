@@ -51,6 +51,124 @@
 .right-button {
     margin-left: auto;
 }
+
+.sectionI-rooms {
+    background-color: #E0E0E0; /* Fondo gris claro */
+    padding: 20px; /* Espacio alrededor del contenido */
+    text-align: center; /* Centra el texto horizontalmente */
+    border-top: 2px solid #a0a0a0; /* Borde superior */
+    border-bottom: 2px solid #a0a0a0; /* Borde inferior */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para darle un efecto de elevación */
+    margin: 0 auto; /* Centrar horizontalmente */
+    width: auto; /* Ajusta el ancho según sea necesario */
+    height: 68px;
+}
+
+.sectionI-title {
+    width: auto;
+    height: 52px;
+    font-family: Judson;
+    text-align: center;
+    padding: 20px; /* Espacio alrededor del contenido */
+    margin: 0;
+    font-size: 2em;
+    color: #060606;
+}
+
+.room-section-containerI {
+    display: flex;
+    background-image: url('../img/estanteria.jpg'); /* Ruta a la imagen de fondo */
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.room-image-containerI,
+.room-details-containerI {
+    background-color: rgba(255, 255, 255, 0.9); /* Fondo blanco semitransparente */
+    border-radius: 10px;
+    margin: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.room-image-containerI {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-containerI {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.roomI-image {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-btnI {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.prev-btnI {
+    left: 10px;
+}
+
+.next-btnI {
+    right: 10px;
+}
+
+.carousel-dotsI {
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.dotI {
+    height: 10px;
+    width: 10px;
+    margin: 0 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.3s ease;
+}
+
+.dotI.active {
+    background-color: white;
+}
+
+.room-details-containerI {
+    flex: 1;
+}
+
+.room-details-containerI h4 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+.room-details-containerI p {
+    margin: 10px 0;
+    font-size: 1em;
+}
 /* *Fin de lo del Inicio */
 
 /*!Esto es del perfil */
@@ -177,5 +295,4 @@
     margin: 5px 0;
     font-size: 0.9em;
 }
-
 /* !Aqui termina lo del perfil */
