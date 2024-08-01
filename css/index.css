@@ -75,11 +75,17 @@
     color: #060606;
 }
 
-.room-section-containerI {
-    display: flex;
+.rooms-gridI {
     background-image: url('../img/estanteria.jpg'); /* Ruta a la imagen de fondo */
     background-size: cover;
     background-position: center;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas */
+    gap: 20px; /* Espacio entre los bloques */
+}
+
+.room-section-containerI {
+    display: flex;
     padding: 20px;
     border-radius: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -296,3 +302,225 @@
     font-size: 0.9em;
 }
 /* !Aqui termina lo del perfil */
+
+/**Esto es de Publicar*/
+.avatar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #e0e0e0; /* Fondo gris claro */
+    border: 5px dashed black; /* Línea de borde discontinua */
+    padding: 20px;
+    margin: 20px 0; /* Quita el margen lateral */
+    width: auto;
+    height: 254px; /* Ajusta la altura según sea necesario */
+    box-sizing: border-box; /* Incluye el padding y el borde en el tamaño total */
+}
+
+.avatar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: Hug (231px); /* Ajusta el tamaño del avatar según sea necesario */
+    height: Hug (231px);
+    background-color: white; /* Fondo blanco */
+    border: 2px solid black; /* Borde negro */
+    border-radius: 50%; /* Hace el avatar circular */
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%; /* Hace la imagen circular */
+}
+
+.add-photo-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.add-photo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-photo h2 {
+    font-weight: 400;
+    line-height: 75px;
+    text-align: center;
+    font-family: Judson; /* Fuente */
+    font-size: 50px; /* Tamaño del texto */
+    margin: 10px 0; /* Espacio alrededor del texto */
+}
+
+.add-photo button {
+    background-color: transparent;
+    border: none;
+    font-size: 100px; /* Tamaño de la cruz */
+    cursor: pointer;
+}
+
+.data-section-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.data-section {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Alinea el contenido al inicio del contenedor */
+    margin: 20px;
+    width: auto;
+    height: auto; /* Ajusta la altura según sea necesario */
+}
+
+.data-container {
+    width: 296px;
+    height: 272px;
+    background-color: #d3d3d3; /* Fondo gris */
+    border: 3px solid #000; /* Borde negro */
+    border-radius: 10px;
+    padding: 20px;
+    margin-left: 26px; /* Separación desde el borde izquierdo */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    text-align: left; /* Alineación del texto a la izquierda */
+    width: 300px; /* Ajusta el tamaño según sea necesario */
+}
+
+.data-container h2 {
+    font-size: 24px; /* Tamaño del texto */
+    text-align: center;
+    margin-bottom: 10px; /* Espacio debajo del título */
+}
+
+.data-container p {
+    font-size: 16px; /* Tamaño del texto */
+    margin: 5px 0; /* Espacio entre los párrafos */
+}
+
+.extra-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 20px; /* Separación desde el contenedor de datos */
+}
+
+.add-photo-box {
+    width: 197px;
+    height: 116px;
+    border: 5px dashed #000;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 20px; /* Espacio entre el cuadro de agregar foto y el botón */
+}
+
+.add-photo-icon {
+    font-size: 70px;
+}
+
+.save-button {
+    background-color: #9191BD; /* Color de fondo del botón */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    width: 122.95px;
+    height: 46.26px;
+}
+/**Aqui termina Publicar*/
+
+/*?Esto es de Acerca de */
+.background-thanks {
+    background-image: url('../img/cuarto.jpg'); /* Ruta a la imagen de fondo */
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    min-height: 704px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.thanks-container {
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semitransparente */
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 80%;
+    max-width: 1000px;
+    text-align: center;
+}
+
+.thanks-container h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.info-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.text-info {
+    flex: 1;
+    padding: 20px;
+    text-align: left;
+}
+
+.text-info h2 {
+    font-size: 1.5em;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.text-info p {
+    font-size: 1em;
+    color: #666;
+    margin: 5px 0;
+}
+
+.image-info {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image-info img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.social-media-thanks {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px 0;
+}
+
+.social-media-thanks a img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: transform 0.3s;
+}
+
+.social-media-thanks a img:hover {
+    transform: scale(1.1);
+}
+/*?Fin de Acerca de */
