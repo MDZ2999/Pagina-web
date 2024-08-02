@@ -110,6 +110,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
                     modal.style.display = "none"; // Oculta el modal del formulario
                     form.reset(); // Resetea el formulario para limpiar los campos
+                    var imagePreview = document.getElementById('imagePreview');
+                    imagePreview.style.display = 'none'; // Oculta la imagen de vista previa
+                    imagePreview.src = ''; // Resetea la fuente de la imagen de vista previa
                 } else {
                     // Si la respuesta es diferente, asume un error y muestra un mensaje
                     Swal.fire({

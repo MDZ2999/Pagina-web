@@ -209,11 +209,12 @@
 }
 
 .avatar {
-    width: Hug (231px)px;
-    height: Fixed (224px)px;
-    border-radius: 50%;
+    width: 231px; /* Tamaño fijo del avatar */
+    height: 224px; /* Tamaño fijo del avatar */
+    border-radius: 50%; /* Hace el avatar circular */
     border: 1px solid white;
     margin-right: 107px; /* Separación entre el avatar y el texto */
+    object-fit: cover; /* Ajusta la imagen para que cubra el contenedor sin distorsionarse */
 }
 
 .text-content {
@@ -661,3 +662,76 @@
 }
 
 /*! Fin del modal de registrar cuarto*/
+
+/*? Estilos para el modal de edición de perfil */
+.editProfileModal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.editProfileModal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+}
+
+.editProfileClose {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.editProfileClose:hover,
+.editProfileClose:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.editProfileModal-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.editProfileCancel-button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.editProfileSave-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+#avatarPreview,
+#bannerPreview {
+    width: 100px;
+    height: 100px;
+    display: none;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+/*? Fin del modal de editar perfil*/

@@ -13,7 +13,9 @@
     <script src="js/check_session.js"></script>  <!-- Script para comprobar si hay una sesión iniciada -->
     <script src="js/logout_handling.js"></script>
     <script src="js/carrusel.js"></script><!--Este hace funcionar el carrusel-->
+    <script src="js/edit_profile.js"></script>
     <script src="js/register_room.js"></script>
+    <script src="js/load_profile_images.js"></script>
 </head>
 <body>
     <!-- Encabezado -->
@@ -256,7 +258,7 @@
                 <div class="add-photo-container">
                     <div class="add-photo">
                         <h2>Agregar foto</h2>
-                        <button>+</button>
+                        <button id="openEditProfileModal">+</button>
                     </div>
                 </div>
             </div>                        
@@ -270,7 +272,7 @@
                         <p>Dirección:</p>
                         <p>Correo Electrónico:</p>
                     </div>
-                    <!-- Botón para abrir el modal -->
+                    <!-- Botón para abrir el modal de Registrar Cuarto -->
                     <div class="extra-content">
                         <div id="openPublicarModal" class="add-photo-box">
                             <div class="add-photo-icon">+</div>
@@ -279,66 +281,6 @@
                 </div>
                 <button class="save-button">Guardar</button>
             </div>                        
-            
-            <!-- El Modal -->
-            <div id="publicarModal" class="publicarModal">
-                <!-- Contenido del Modal -->
-                <div class="publicarModal-content">
-                    <span class="publicarClose">&times;</span>
-                    <h2>Registrar Cuarto</h2>
-                    <form id="registerRoomForm" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label for="titulo">Título:</label>
-                            <input type="text" id="titulo" name="titulo" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="descripcion">Descripción:</label>
-                            <textarea id="descripcion" name="descripcion" required></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="servicios">Servicios:</label>
-                            <textarea id="servicios" name="servicios" required></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="precio">Precio $:</label>
-                            <input type="number" id="precio" name="precio" step="0.01" required>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="disponibilidad">Disponibilidad:</label>
-                            <select id="disponibilidad" name="disponibilidad" required>
-                                <option value="1">Disponible</option>
-                                <option value="0">No Disponible</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="direccion">Dirección:</label>
-                            <textarea id="direccion" name="direccion" required></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="imagen">Imagen:</label>
-                            <input type="file" id="imagen" name="imagen" accept="image/*" required>
-                            <img id="imagePreview">
-                        </div>
-
-                        <div class="publicarModal-buttons">
-                            <button type="button" class="publicarCancel-button">Cancelar</button>
-                            <button type="submit" class="publicarSave-button">Guardar</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-
-                <!-- Modal para la imagen ampliada -->
-            <div id="imageModal" class="imageModal">
-                <span class="imageModalClose">&times;</span>
-                <img class="imageModalContent" id="imageModalContent">
-            </div>
 
         </section>
 
@@ -390,6 +332,90 @@
             <img src="img/gmail.png" alt="Gmail Logo">
         </div>
     </footer>   
+
+    <!-- Modal para editar perfil -->
+    <div id="editProfileModal" class="editProfileModal">
+        <div class="editProfileModal-content">
+            <span class="editProfileClose">&times;</span>
+            <h2>Editar Perfil</h2>
+            <form id="editProfileForm" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="avatar">Cambiar foto de perfil:</label>
+                    <input type="file" id="avatar" name="avatar" accept="image/*">
+                    <img id="avatarPreview" src="#" alt="Avatar Preview" style="display:none;">
+                </div>
+                <div class="form-group">
+                    <label for="banner">Cambiar banner:</label>
+                    <input type="file" id="banner" name="banner" accept="image/*">
+                    <img id="bannerPreview" src="#" alt="Banner Preview" style="display:none;">
+                </div>
+                <div class="editProfileModal-buttons">
+                    <button type="button" class="editProfileCancel-button">Cancelar</button>
+                    <button type="submit" class="editProfileSave-button">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- El Modal para Registrar Cuarto-->
+    <div id="publicarModal" class="publicarModal">
+        <!-- Contenido del Modal -->
+        <div class="publicarModal-content">
+            <span class="publicarClose">&times;</span>
+            <h2>Registrar Cuarto</h2>
+            <form id="registerRoomForm" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="titulo">Título:</label>
+                    <input type="text" id="titulo" name="titulo" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="descripcion">Descripción:</label>
+                    <textarea id="descripcion" name="descripcion" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="servicios">Servicios:</label>
+                    <textarea id="servicios" name="servicios" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="precio">Precio $:</label>
+                    <input type="number" id="precio" name="precio" step="0.01" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="disponibilidad">Disponibilidad:</label>
+                    <select id="disponibilidad" name="disponibilidad" required>
+                        <option value="1">Disponible</option>
+                        <option value="0">No Disponible</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="direccion">Dirección:</label>
+                    <textarea id="direccion" name="direccion" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="imagen">Imagen:</label>
+                    <input type="file" id="imagen" name="imagen" accept="image/*" required>
+                    <img id="imagePreview">
+                </div>
+
+                <div class="publicarModal-buttons">
+                    <button type="button" class="publicarCancel-button">Cancelar</button>
+                    <button type="submit" class="publicarSave-button">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+        <!-- Modal para la imagen ampliada -->
+    <div id="imageModal" class="imageModal">
+        <span class="imageModalClose">&times;</span>
+        <img class="imageModalContent" id="imageModalContent">
+    </div>
 
 </body>
 </html>
