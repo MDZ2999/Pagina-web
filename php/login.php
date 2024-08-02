@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $contrasena = $_POST['contrasena'];
 
     // Prepara la consulta SQL para buscar el correo en la base de datos
-    $sql = "SELECT correo, contrasena FROM info_usuarios WHERE correo = ?";
+    $sql = "SELECT id_usuario, correo, contrasena FROM info_usuarios WHERE correo = ?";
     $stmt = $conn->prepare($sql); // Prepara la declaración SQL
     $stmt->bind_param("s", $correo); // Vincula el parámetro de correo a la consulta
     $stmt->execute(); // Ejecuta la consulta
@@ -26,8 +26,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $user = $result->fetch_assoc(); // Obtiene los datos del usuario como un array asociativo
         // Verifica si la contraseña ingresada coincide con la hash almacenada
         if (password_verify($contrasena, $user['contrasena'])) {
-            // Establece la variable de sesión para el correo
+            // Establece las variables de sesión para el correo y el id del usuario
             $_SESSION['correo'] = $correo;
+            $_SESSION['user_id'] = $user['id_usuario']; // Guarda el id del usuario en la sesión
             // Devuelve un JSON indicando el éxito del inicio de sesión
             echo json_encode(['success' => true, 'message' => 'Inicio de sesión exitoso.']);
         } else {
