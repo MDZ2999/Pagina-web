@@ -249,7 +249,8 @@
     border-radius: 15px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 1);
     border: 5px solid black;
-    width: 300px;
+    width: 296px;
+    height: 272px;
     margin-right: 28px;
 }
 
@@ -270,10 +271,11 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
+    width: 100%;
 }
 
 .room {
-    display: flex;
+    display: none; /* Ocultar inicialmente todas las habitaciones */
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
@@ -301,6 +303,27 @@
 .room-details p {
     margin: 5px 0;
     font-size: 0.9em;
+}
+
+.room-nav-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.room-nav-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.room-nav-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
 }
 /* !Aqui termina lo del perfil */
 
@@ -390,6 +413,7 @@
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     text-align: left; /* Alineación del texto a la izquierda */
     width: 300px; /* Ajusta el tamaño según sea necesario */
+    cursor: pointer;
 }
 
 .data-container h2 {

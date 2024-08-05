@@ -19,6 +19,8 @@
     <script src="js/edit_profile.js"></script>
     <script src="js/register_room.js"></script>
     <script src="js/load_profile_images.js"></script>
+    <script src="js/load_owner_info.js"></script>
+    <script src="js/roomNavigation.js"></script>
 </head>
 <body>
     <!-- Encabezado -->
@@ -198,56 +200,71 @@
             <div class="owner-section">
                 <div class="owner-info">
                     <h3>Datos del Propietario</h3>
-                    <p>Nombre:</p>
-                    <p>Teléfono:</p>
-                    <p>Dirección:</p>
-                    <p>Correo Electrónico:</p>
-                </div>
-                <div class="rooms-section">
-                    <div class="room">
-                        <img src="img/cama.jpg" alt="Room 1" class="room-image">
-                        <div class="room-details">
-                            <h4>Recamara 1</h4>
-                            <p>Baño: Sí</p>
-                            <p>Accesorios: Cama, silla y mesa de escritorio</p>
-                            <p>Conexión a internet: Sí</p>
-                            <p>Calefacción: Sí</p>
-                            <p>Aire acondicionado: Sí</p>
+                    <p>Nombre: <span id="nombreUsuario"></span></p>
+                    <p>Teléfono: <span id="telefonoUsuario"></span></p>
+                    <p>Dirección: <span id="direccionUsuario"></span></p>
+                    <p>Correo Electrónico: <span id="correoUsuario"></span></p>
+                </div>                
+                <div class="room-nav-buttons">
+                    <button class="room-nav-button room-left-button" onclick="previousPage()" disabled>&lt;</button>
+                    <div class="rooms-section" id="roomsSection">
+                        <div class="room">
+                            <img src="img/cama.jpg" alt="Room 1" class="room-image">
+                            <div class="room-details">
+                                <h4>Recamara 1</h4>
+                                <p>Baño: Sí</p>
+                                <p>Accesorios: Cama, silla y mesa de escritorio</p>
+                                <p>Conexión a internet: Sí</p>
+                                <p>Calefacción: Sí</p>
+                                <p>Aire acondicionado: Sí</p>
+                            </div>
+                        </div>
+                        <div class="room">
+                            <img src="img/cama.jpg" alt="Room 2" class="room-image">
+                            <div class="room-details">
+                                <h4>Recamara 1</h4>
+                                <p>Baño: Sí</p>
+                                <p>Accesorios: Cama, silla y mesa de escritorio</p>
+                                <p>Conexión a internet: Sí</p>
+                                <p>Calefacción: Sí</p>
+                                <p>Aire acondicionado: Sí</p>
+                            </div>
+                        </div>
+                        <div class="room">
+                            <img src="img/cama.jpg" alt="Room 3" class="room-image">
+                            <div class="room-details">
+                                <h4>Recamara 1</h4>
+                                <p>Baño: Sí</p>
+                                <p>Accesorios: Cama, silla y mesa de escritorio</p>
+                                <p>Conexión a internet: Sí</p>
+                                <p>Calefacción: Sí</p>
+                                <p>Aire acondicionado: Sí</p>
+                            </div>
+                        </div>
+                        <div class="room">
+                            <img src="img/cama.jpg" alt="Room 4" class="room-image">
+                            <div class="room-details">
+                                <h4>Recamara 1</h4>
+                                <p>Baño: Sí</p>
+                                <p>Accesorios: Cama, silla y mesa de escritorio</p>
+                                <p>Conexión a internet: Sí</p>
+                                <p>Calefacción: Sí</p>
+                                <p>Aire acondicionado: Sí</p>
+                            </div>
+                        </div>
+                        <div class="room">
+                            <img src="img/cama.jpg" alt="Room 4" class="room-image">
+                            <div class="room-details">
+                                <h4>Recamara 1</h4>
+                                <p>Baño: Sí</p>
+                                <p>Accesorios: Cama, silla y mesa de escritorio</p>
+                                <p>Conexión a internet: Sí</p>
+                                <p>Calefacción: Sí</p>
+                                <p>Aire acondicionado: Sí</p>
+                            </div>
                         </div>
                     </div>
-                    <div class="room">
-                        <img src="img/cama.jpg" alt="Room 2" class="room-image">
-                        <div class="room-details">
-                            <h4>Recamara 1</h4>
-                            <p>Baño: Sí</p>
-                            <p>Accesorios: Cama, silla y mesa de escritorio</p>
-                            <p>Conexión a internet: Sí</p>
-                            <p>Calefacción: Sí</p>
-                            <p>Aire acondicionado: Sí</p>
-                        </div>
-                    </div>
-                    <div class="room">
-                        <img src="img/cama.jpg" alt="Room 3" class="room-image">
-                        <div class="room-details">
-                            <h4>Recamara 1</h4>
-                            <p>Baño: Sí</p>
-                            <p>Accesorios: Cama, silla y mesa de escritorio</p>
-                            <p>Conexión a internet: Sí</p>
-                            <p>Calefacción: Sí</p>
-                            <p>Aire acondicionado: Sí</p>
-                        </div>
-                    </div>
-                    <div class="room">
-                        <img src="img/cama.jpg" alt="Room 4" class="room-image">
-                        <div class="room-details">
-                            <h4>Recamara 1</h4>
-                            <p>Baño: Sí</p>
-                            <p>Accesorios: Cama, silla y mesa de escritorio</p>
-                            <p>Conexión a internet: Sí</p>
-                            <p>Calefacción: Sí</p>
-                            <p>Aire acondicionado: Sí</p>
-                        </div>
-                    </div>
+                    <button class="room-nav-button room-right-button" onclick="nextPage()">&gt;</button>
                 </div>
             </div>
 
@@ -268,12 +285,12 @@
             
             <div class="data-section-wrapper">
                 <div class="data-section">
-                    <div class="data-container">
+                    <div class="data-container" id="openEditModal">
                         <h2>Tus Datos</h2>
-                        <p>Nombre:</p>
-                        <p>Teléfono:</p>
-                        <p>Dirección:</p>
-                        <p>Correo Electrónico:</p>
+                        <p>Nombre: <span id="editnombreUsuario"></span></p>
+                        <p>Teléfono: <span id="editTelefonoUsuario"></span></p>
+                        <p>Dirección: <span id="editdireccionUsuario"></span></p>
+                        <p>Correo Electrónico: <span id="editcorreoUsuario"></span></p>
                     </div>
                     <!-- Botón para abrir el modal de Registrar Cuarto -->
                     <div class="extra-content">
@@ -357,6 +374,30 @@
                 <div class="editProfileModal-buttons">
                     <button type="button" class="editProfileCancel-button">Cancelar</button>
                     <button type="submit" class="editProfileSave-button">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal para editar datos -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close" id="closeEditModal">&times;</span>
+            <h2>Editar Datos</h2>
+            <form id="editForm">
+                <div class="form-group">
+                    <label for="nombres">Nombre:</label>
+                    <input type="text" id="nombres" name="nombres">
+                    <input type="text" id="apellidoP" name="apellidoP">
+                    <input type="text" id="apellidoM" name="apellidoM">
+                </div>
+                <div class="form-group">
+                    <label for="telefono">Teléfono:</label>
+                    <input type="text" id="telefono" name="telefono">
+                </div>
+                <div class="modal-buttons">
+                    <button type="button" id="cancelButton" class="Cancel-button">Cancelar</button>
+                    <button type="submit" class="Save-button">Guardar</button>
                 </div>
             </form>
         </div>
