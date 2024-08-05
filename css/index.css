@@ -117,6 +117,7 @@
 
 .roomI-image {
     width: 100%;
+    max-height: 156px;
     height: auto;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -272,6 +273,7 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 20px;
     width: 100%;
+    min-width: 810px;
 }
 
 .room {
@@ -280,11 +282,12 @@
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
     overflow: hidden;
+    max-height: 141px; 
 }
 
 .room-image {
     width: 234px;
-    height: 141px; 
+    max-height: 141px; 
     height: auto;
     border-radius: 10px 20px 20px 10px; /* Esquinas específicas */
     box-shadow: 0 4px 8px rgba(206, 21, 21, 0.1); /* Sombra alrededor de la imagen */

@@ -21,6 +21,9 @@
     <script src="js/load_profile_images.js"></script>
     <script src="js/load_owner_info.js"></script>
     <script src="js/roomNavigation.js"></script>
+    <script src="js/update_user_info.js"></script>
+    <script src="js/load_rooms.js"></script>
+    <script src="js/load_all_rooms.js"></script>
 </head>
 <body>
     <!-- Encabezado -->
@@ -93,95 +96,6 @@
             </div>
             
             <div class="rooms-gridI">
-                <div class="room-section-containerI">
-                    <div class="room-image-containerI">
-                        <div class="carousel-containerI">
-                            <button class="carousel-btnI prev-btnI">&lt;</button>
-                            <img src="img/cama.jpg" alt="Room 1" class="roomI-image">
-                            <button class="carousel-btnI next-btnI">&gt;</button>
-                            <div class="carousel-dotsI">
-                                <span class="dotI active"></span>
-                                <span class="dotI"></span>
-                                <span class="dotI"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="room-details-containerI">
-                        <h4>Recamara 1</h4>
-                        <p>Baño: Sí</p>
-                        <p>Accesorios: Cama, silla y mesa de escritorio</p>
-                        <p>Conexión a internet: Sí</p>
-                        <p>Calefacción: Sí</p>
-                        <p>Aire acondicionado: Sí</p>
-                    </div>
-                </div>
-                <div class="room-section-containerI">
-                    <div class="room-image-containerI">
-                        <div class="carousel-containerI">
-                            <button class="carousel-btnI prev-btnI">&lt;</button>
-                            <img src="img/cama.jpg" alt="Room 1" class="roomI-image">
-                            <button class="carousel-btnI next-btnI">&gt;</button>
-                            <div class="carousel-dotsI">
-                                <span class="dotI active"></span>
-                                <span class="dotI"></span>
-                                <span class="dotI"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="room-details-containerI">
-                        <h4>Recamara 1</h4>
-                        <p>Baño: Sí</p>
-                        <p>Accesorios: Cama, silla y mesa de escritorio</p>
-                        <p>Conexión a internet: Sí</p>
-                        <p>Calefacción: Sí</p>
-                        <p>Aire acondicionado: Sí</p>
-                    </div>
-                </div>
-                <div class="room-section-containerI">
-                    <div class="room-image-containerI">
-                        <div class="carousel-containerI">
-                            <button class="carousel-btnI prev-btnI">&lt;</button>
-                            <img src="img/cama.jpg" alt="Room 1" class="roomI-image">
-                            <button class="carousel-btnI next-btnI">&gt;</button>
-                            <div class="carousel-dotsI">
-                                <span class="dotI active"></span>
-                                <span class="dotI"></span>
-                                <span class="dotI"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="room-details-containerI">
-                        <h4>Recamara 1</h4>
-                        <p>Baño: Sí</p>
-                        <p>Accesorios: Cama, silla y mesa de escritorio</p>
-                        <p>Conexión a internet: Sí</p>
-                        <p>Calefacción: Sí</p>
-                        <p>Aire acondicionado: Sí</p>
-                    </div>
-                </div>
-                <div class="room-section-containerI">
-                    <div class="room-image-containerI">
-                        <div class="carousel-containerI">
-                            <button class="carousel-btnI prev-btnI">&lt;</button>
-                            <img src="img/cama.jpg" alt="Room 1" class="roomI-image">
-                            <button class="carousel-btnI next-btnI">&gt;</button>
-                            <div class="carousel-dotsI">
-                                <span class="dotI active"></span>
-                                <span class="dotI"></span>
-                                <span class="dotI"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="room-details-containerI">
-                        <h4>Recamara 1</h4>
-                        <p>Baño: Sí</p>
-                        <p>Accesorios: Cama, silla y mesa de escritorio</p>
-                        <p>Conexión a internet: Sí</p>
-                        <p>Calefacción: Sí</p>
-                        <p>Aire acondicionado: Sí</p>
-                    </div>
-                </div>
-                <!-- Repite los bloques según sea necesario -->
             </div>                       
             
         </section>
@@ -202,67 +116,11 @@
                     <h3>Datos del Propietario</h3>
                     <p>Nombre: <span id="nombreUsuario"></span></p>
                     <p>Teléfono: <span id="telefonoUsuario"></span></p>
-                    <p>Dirección: <span id="direccionUsuario"></span></p>
                     <p>Correo Electrónico: <span id="correoUsuario"></span></p>
                 </div>                
                 <div class="room-nav-buttons">
                     <button class="room-nav-button room-left-button" onclick="previousPage()" disabled>&lt;</button>
                     <div class="rooms-section" id="roomsSection">
-                        <div class="room">
-                            <img src="img/cama.jpg" alt="Room 1" class="room-image">
-                            <div class="room-details">
-                                <h4>Recamara 1</h4>
-                                <p>Baño: Sí</p>
-                                <p>Accesorios: Cama, silla y mesa de escritorio</p>
-                                <p>Conexión a internet: Sí</p>
-                                <p>Calefacción: Sí</p>
-                                <p>Aire acondicionado: Sí</p>
-                            </div>
-                        </div>
-                        <div class="room">
-                            <img src="img/cama.jpg" alt="Room 2" class="room-image">
-                            <div class="room-details">
-                                <h4>Recamara 1</h4>
-                                <p>Baño: Sí</p>
-                                <p>Accesorios: Cama, silla y mesa de escritorio</p>
-                                <p>Conexión a internet: Sí</p>
-                                <p>Calefacción: Sí</p>
-                                <p>Aire acondicionado: Sí</p>
-                            </div>
-                        </div>
-                        <div class="room">
-                            <img src="img/cama.jpg" alt="Room 3" class="room-image">
-                            <div class="room-details">
-                                <h4>Recamara 1</h4>
-                                <p>Baño: Sí</p>
-                                <p>Accesorios: Cama, silla y mesa de escritorio</p>
-                                <p>Conexión a internet: Sí</p>
-                                <p>Calefacción: Sí</p>
-                                <p>Aire acondicionado: Sí</p>
-                            </div>
-                        </div>
-                        <div class="room">
-                            <img src="img/cama.jpg" alt="Room 4" class="room-image">
-                            <div class="room-details">
-                                <h4>Recamara 1</h4>
-                                <p>Baño: Sí</p>
-                                <p>Accesorios: Cama, silla y mesa de escritorio</p>
-                                <p>Conexión a internet: Sí</p>
-                                <p>Calefacción: Sí</p>
-                                <p>Aire acondicionado: Sí</p>
-                            </div>
-                        </div>
-                        <div class="room">
-                            <img src="img/cama.jpg" alt="Room 4" class="room-image">
-                            <div class="room-details">
-                                <h4>Recamara 1</h4>
-                                <p>Baño: Sí</p>
-                                <p>Accesorios: Cama, silla y mesa de escritorio</p>
-                                <p>Conexión a internet: Sí</p>
-                                <p>Calefacción: Sí</p>
-                                <p>Aire acondicionado: Sí</p>
-                            </div>
-                        </div>
                     </div>
                     <button class="room-nav-button room-right-button" onclick="nextPage()">&gt;</button>
                 </div>
@@ -387,9 +245,9 @@
             <form id="editForm">
                 <div class="form-group">
                     <label for="nombres">Nombre:</label>
-                    <input type="text" id="nombres" name="nombres">
-                    <input type="text" id="apellidoP" name="apellidoP">
-                    <input type="text" id="apellidoM" name="apellidoM">
+                    <input type="text" placeholder="Nombres" id="nombres" name="nombres">
+                    <input type="text" placeholder="Apellido Paterno" id="apellidoP" name="apellidoP">
+                    <input type="text" placeholder="Apellido Materno" id="apellidoM" name="apellidoM">
                 </div>
                 <div class="form-group">
                     <label for="telefono">Teléfono:</label>
