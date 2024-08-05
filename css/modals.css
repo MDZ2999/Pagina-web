@@ -1,0 +1,294 @@
+/* !Ventana Modal para Registrar Cuarto */
+/* Desactivar desplazamiento del fondo */
+.no-scroll {
+    overflow: hidden;
+}
+/* Estilos del Modal */
+.publicarModal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.publicarModal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+}
+
+.publicarClose {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.publicarClose:hover,
+.publicarClose:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;  /* Incluye el padding y el border en el ancho total */
+}
+
+.publicarModal-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.publicarCancel-button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.publicarSave-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+#imagePreview {
+    width: 100px;
+    height: 100px;
+    display: none;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+/* Estilos del Modal de Imagen */
+.imageModal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.imageModalContent {
+    margin: auto;
+    display: block;
+    width: auto;
+    height: auto;
+    max-width: 700px;
+}
+
+.imageModalClose {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.imageModalClose:hover,
+.imageModalClose:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*! Fin del modal de registrar cuarto*/
+
+/*? Estilos para el modal de edición de perfil */
+.editProfileModal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.editProfileModal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+}
+
+.editProfileClose,
+.cropperClose{
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.editProfileClose:hover,
+.editProfileClose:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.editProfileModal-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.editProfileCancel-button,
+.cropCancel-button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.editProfileSave-button,
+.cropSave-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+/*? Fin del modal de editar perfil*/
+
+/** Modal del cropper */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+}
+
+.cropperClose {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.cropperClose:hover,
+.cropperClose:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.cropCancel-button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.cropSave-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+/* Estilos del cropper */
+#cropperContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+}
+
+#imageToCrop {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.cropperModal-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/**Fin del modal del cropper */
+
+#avatarPreview{
+    width: 231px; /* Tamaño fijo del avatar */
+    height: 224px; /* Tamaño fijo del avatar */
+    border-radius: 50%; /* Hace el avatar circular */
+    object-fit: cover; /* Ajusta la imagen para que cubra el contenedor sin distorsionarse */
+    display: block;
+    margin: 10px auto; /* Centra horizontalmente la imagen y agrega un margen superior */
+}
+
+#bannerPreview {
+    width: 100%;
+    height: 254px; /* Tamaño fijo del banner */
+    object-fit: cover;
+    display: block;
+    margin-top: 10px;
+}

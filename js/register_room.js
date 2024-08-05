@@ -13,6 +13,14 @@ document.addEventListener('DOMContentLoaded', function() {
 
     var body = document.body;
 
+    // Función para resetear el formulario y ocultar previsualizaciones
+    function resetRegisterRoomForm() {
+        document.getElementById("registerRoomForm").reset();
+        var imagePreview = document.getElementById('imagePreview');
+        imagePreview.style.display = 'none';
+        imagePreview.src = '';
+    }
+
     // Verificar si los elementos existen antes de agregar los event listeners
     if (btn) {
         btn.addEventListener('click', function() {
@@ -25,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
         span.addEventListener('click', function() {
             modal.style.display = "none";
             body.classList.remove("no-scroll");
+            resetRegisterRoomForm(); // Llamar a la función de reseteo
         });
     }
 
@@ -32,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
         cancelButton.addEventListener('click', function() {
             modal.style.display = "none";
             body.classList.remove("no-scroll");
+            resetRegisterRoomForm(); // Llamar a la función de reseteo
         });
     }
 
@@ -40,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (event.target == modal) {
             modal.style.display = "none";
             body.classList.remove("no-scroll");
+            resetRegisterRoomForm(); // Llamar a la función de reseteo
         }
     });
 
@@ -109,10 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         confirmButtonText: 'Aceptar'
                     });
                     modal.style.display = "none"; // Oculta el modal del formulario
-                    form.reset(); // Resetea el formulario para limpiar los campos
-                    var imagePreview = document.getElementById('imagePreview');
-                    imagePreview.style.display = 'none'; // Oculta la imagen de vista previa
-                    imagePreview.src = ''; // Resetea la fuente de la imagen de vista previa
+                    resetRegisterRoomForm(); // Llamar a la función de reseteo
                 } else {
                     // Si la respuesta es diferente, asume un error y muestra un mensaje
                     Swal.fire({

@@ -6,8 +6,11 @@
     <title>Mi Habitación</title>
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/modals.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script><!--Script de la alerta -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
     <script src="js/menu.js"></script>
     <script src="js/navbar.js"></script>
     <script src="js/check_session.js"></script>  <!-- Script para comprobar si hay una sesión iniciada -->
@@ -343,11 +346,13 @@
                     <label for="avatar">Cambiar foto de perfil:</label>
                     <input type="file" id="avatar" name="avatar" accept="image/*">
                     <img id="avatarPreview" src="#" alt="Avatar Preview" style="display:none;">
+                    <input type="hidden" id="avatarCropped" name="avatarCropped">
                 </div>
                 <div class="form-group">
                     <label for="banner">Cambiar banner:</label>
                     <input type="file" id="banner" name="banner" accept="image/*">
                     <img id="bannerPreview" src="#" alt="Banner Preview" style="display:none;">
+                    <input type="hidden" id="bannerCropped" name="bannerCropped">
                 </div>
                 <div class="editProfileModal-buttons">
                     <button type="button" class="editProfileCancel-button">Cancelar</button>
@@ -417,5 +422,18 @@
         <img class="imageModalContent" id="imageModalContent">
     </div>
 
+    <!-- Modal para el recorte de imagen -->
+    <div id="cropperModal" class="modal">
+        <div class="modal-content">
+            <span class="cropperClose">&times;</span>
+            <div id="cropperContainer">
+                <img id="imageToCrop" src="#" alt="Imagen a recortar">
+            </div>
+            <div class="cropperModal-buttons">
+                <button type="button" class="cropCancel-button">Cancelar</button>
+                <button type="button" class="cropSave-button">Guardar</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

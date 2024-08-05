@@ -12,11 +12,22 @@ $id_usuario = $_SESSION['user_id'];
 $imagen = null;
 $banner = null;
 
-if (isset($_FILES['avatar']) && $_FILES['avatar']['error'] == UPLOAD_ERR_OK) {
+// Verificar si se envió la imagen del avatar recortada
+if (isset($_POST['avatarCropped']) && !empty($_POST['avatarCropped'])) {
+    $imagen = base64_decode(explode(',', $_POST['avatarCropped'])[1]);
+}
+
+// Verificar si se envió la imagen del banner recortada
+if (isset($_POST['bannerCropped']) && !empty($_POST['bannerCropped'])) {
+    $banner = base64_decode(explode(',', $_POST['bannerCropped'])[1]);
+}
+
+// Alternativamente, si no se envió la imagen recortada, verificar si se subió una imagen normal
+if ($imagen === null && isset($_FILES['avatar']) && $_FILES['avatar']['error'] == UPLOAD_ERR_OK) {
     $imagen = file_get_contents($_FILES['avatar']['tmp_name']);
 }
 
-if (isset($_FILES['banner']) && $_FILES['banner']['error'] == UPLOAD_ERR_OK) {
+if ($banner === null && isset($_FILES['banner']) && $_FILES['banner']['error'] == UPLOAD_ERR_OK) {
     $banner = file_get_contents($_FILES['banner']['tmp_name']);
 }
 
