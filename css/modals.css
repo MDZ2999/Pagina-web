@@ -329,6 +329,98 @@
 }
 /*?Fin de edicion de datos perfil */
 
+/*! Estilos del Modal de Edición de Cuarto */
+.editRoomModal {
+    display: none;
+    position: fixed;
+    z-index: 1050;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.editRoomModal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+}
+
+.editRoomClose {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.editRoomClose:hover,
+.editRoomClose:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.editRoomModal .form-group {
+    margin-bottom: 15px;
+}
+
+.editRoomModal .form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.editRoomModal .form-group input,
+.editRoomModal .form-group textarea,
+.editRoomModal .form-group select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.editRoomModal-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.editRoomCancel-button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.editRoomSave-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+#imageEditPreview {
+    width: 100px;
+    height: 100px;
+    display: none;
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+/*! Fin del modal de edicion de cuarto*/
+
 #avatarPreview{
     width: 231px; /* Tamaño fijo del avatar */
     height: 224px; /* Tamaño fijo del avatar */
