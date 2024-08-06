@@ -24,10 +24,13 @@ $direccion = $_POST['direccion'];
 
 // Manejo de la imagen
 $imagen = file_get_contents($_FILES['imagen']['tmp_name']);
+$imagen2 = isset($_FILES['imagen2']) ? file_get_contents($_FILES['imagen2']['tmp_name']) : null;
+$imagen3 = isset($_FILES['imagen3']) ? file_get_contents($_FILES['imagen3']['tmp_name']) : null;
+$imagen4 = isset($_FILES['imagen4']) ? file_get_contents($_FILES['imagen4']['tmp_name']) : null;
 
 // Preparar y vincular
-$stmt = $conn->prepare("INSERT INTO cuartos (id_usuario, titulo, descripcion, servicios, precio, disponibilidad, direccion, imagen) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("isssdsis", $id_usuario, $titulo, $descripcion, $servicios, $precio, $disponibilidad, $direccion, $imagen);
+$stmt = $conn->prepare("INSERT INTO cuartos (id_usuario, titulo, descripcion, servicios, precio, disponibilidad, direccion, imagen, imagen2, imagen3, imagen4) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("isssdsissss", $id_usuario, $titulo, $descripcion, $servicios, $precio, $disponibilidad, $direccion, $imagen, $imagen2, $imagen3, $imagen4);
 
 // Ejecutar la declaración
 if ($stmt->execute()) {

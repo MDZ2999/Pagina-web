@@ -55,19 +55,19 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
         // Agrega un escuchador de eventos al elemento de entrada de archivo con id 'imagen'
-    document.getElementById('imagen').addEventListener('change', function(event) {
-        var input = event.target; // Obtiene el input que disparó el evento
-        var reader = new FileReader(); // Crea una instancia de FileReader para leer archivos
-
-        // Define la función que se ejecutará una vez que el FileReader haya cargado el archivo
-        reader.onload = function() {
-            var dataURL = reader.result; // Obtiene el resultado de la lectura del archivo, que es una URL de datos
-            var imagePreview = document.getElementById('imagePreview'); // Obtiene el elemento donde se mostrará la vista previa
-            imagePreview.src = dataURL; // Establece el atributo 'src' del elemento de imagen a la URL de datos del archivo leído
-            imagePreview.style.display = 'block'; // Asegura que la imagen sea visible cambiando el estilo 'display'
-        };
-        // Comienza la lectura del archivo como una URL de datos (base64)
-        reader.readAsDataURL(input.files[0]);
+    document.querySelectorAll('input[type="file"]').forEach(function(input) {
+        input.addEventListener('change', function(event) {
+            var reader = new FileReader();
+            var previewId = 'imagePreview' + (input.id.replace('imagen', '') || '');
+            var imagePreview = document.getElementById(previewId);
+    
+            reader.onload = function() {
+                var dataURL = reader.result;
+                imagePreview.src = dataURL;
+                imagePreview.style.display = 'block';
+            };
+            reader.readAsDataURL(input.files[0]);
+        });
     });
 
     var imageModal = document.getElementById("imageModal");
@@ -75,11 +75,13 @@ document.addEventListener('DOMContentLoaded', function() {
     var imageModalClose = document.querySelector(".imageModalClose");
 
     // Abrir el modal de imagen ampliada
-    document.getElementById('imagePreview').onclick = function() {
-        imageModalContent.src = this.src;
-        imageModal.style.display = "block";
-        document.body.classList.add("no-scroll");
-    }
+    ['imagePreview', 'imagePreview2', 'imagePreview3', 'imagePreview4'].forEach(function(previewId) {
+        document.getElementById(previewId).onclick = function() {
+            imageModalContent.src = this.src;
+            imageModal.style.display = "block";
+            document.body.classList.add("no-scroll");
+        }
+    });
 
     // Cerrar el modal de imagen ampliada
     imageModalClose.onclick = function() {

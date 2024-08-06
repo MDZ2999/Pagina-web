@@ -7,7 +7,7 @@
 .publicarModal {
     display: none;
     position: fixed;
-    z-index: 1;
+    z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
@@ -85,9 +85,12 @@
     cursor: pointer;
 }
 
-#imagePreview {
-    width: 100px;
-    height: 100px;
+#imagePreview,
+#imagePreview2, 
+#imagePreview3, 
+#imagePreview4 {
+    max-width: 100px;
+    max-height: 100px;
     display: none;
     margin-top: 10px;
     border: 1px solid #ccc;
@@ -333,7 +336,7 @@
 .editRoomModal {
     display: none;
     position: fixed;
-    z-index: 1050;
+    z-index: 1000;
     left: 0;
     top: 0;
     width: 100%;
@@ -410,7 +413,10 @@
     cursor: pointer;
 }
 
-#imageEditPreview {
+#imageEditPreview, 
+#imageEditPreview2, 
+#imageEditPreview3, 
+#imageEditPreview4 {
     width: 100px;
     height: 100px;
     display: none;
