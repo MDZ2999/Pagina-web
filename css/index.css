@@ -285,6 +285,13 @@
     max-height: 141px; 
 }
 
+.carousel-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
 .room-image {
     width: 234px;
     max-height: 141px; 

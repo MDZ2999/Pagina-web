@@ -1,8 +1,8 @@
 <?php
 require_once 'conection.php';
 
-// Consulta para obtener todos los datos de los cuartos ordenados alfabéticamente por título
-$sql = "SELECT titulo, servicios, disponibilidad, imagen FROM cuartos ORDER BY titulo ASC";
+// Consulta para obtener todos los datos de los cuartos donde la disponibilidad es 1, ordenados alfabéticamente por título
+$sql = "SELECT titulo, servicios, disponibilidad, imagen FROM cuartos WHERE disponibilidad = 1 ORDER BY titulo ASC";
 $result = $conn->query($sql);
 
 $rooms = [];
