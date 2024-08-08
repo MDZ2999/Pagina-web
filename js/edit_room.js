@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
                 closeModal();
                 // Opcional: recargar la página para reflejar los cambios
-                location.reload();
+                //location.reload();
             }
         })
         .catch(error => {

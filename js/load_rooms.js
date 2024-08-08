@@ -4,17 +4,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const roomsSection = document.getElementById('roomsSection');
     let totalPages = 0;
 
-    function fetchRooms() {
-        fetch('php/get_user_rooms.php')
-            .then(response => response.json())
-            .then(data => {
-                if (data.error) {
-                    console.error(data.error);
-                } else {
-                    displayRooms(data);
-                }
-            })
-            .catch(error => console.error('Error:', error));
+    async function fetchRooms() {
+        try {
+            const response = await fetch('php/get_user_rooms.php');
+            const data = await response.json();
+            if (data.error) {
+                console.error(data.error);
+            } else {
+                displayRooms(data);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
     }
 
     function displayRooms(rooms) {
@@ -47,18 +48,16 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
             roomsSection.appendChild(roomElement);
 
-            // Añadir eventos de click para el carrusel
             setupCarousel(roomElement);
         });
 
         showPage(currentPage);
     }
 
-    // Carrusel
     const imageModal = document.getElementById('imageModalCarrusel');
     const modalImage = document.getElementById('modalImage');
     const imageModalClose = document.querySelector('.imageModalCarruselClose');
-    
+
     let prevModalBtn, nextModalBtn, modalDots;
     let currentImageIndex = 0;
     let currentImages = [];
@@ -75,35 +74,43 @@ document.addEventListener('DOMContentLoaded', function() {
     function openImageModal(images, index) {
         currentImages = images;
         currentImageIndex = index;
+        generateDots(images.length);
         imageModal.style.display = 'block';
         document.body.classList.add('no-scroll');
-
-        // Inicializar los botones y puntos del modal después de abrirlo
         prevModalBtn = document.querySelector('#imageModalCarrusel .prev-btn');
         nextModalBtn = document.querySelector('#imageModalCarrusel .next-btn');
-        modalDots = document.querySelectorAll('#imageModalCarrusel .dot');
-
-        // Asegurarse de que los puntos se inicialicen antes de llamar a showModalImage
+        modalDots = document.querySelectorAll('#carouselDotsContainer .dot');
         showModalImage(currentImageIndex);
 
-        if (prevModalBtn && nextModalBtn && modalDots) {
-            prevModalBtn.addEventListener('click', () => {
-                currentImageIndex = (currentImageIndex > 0) ? currentImageIndex - 1 : currentImages.length - 1;
-                showModalImage(currentImageIndex);
+        prevModalBtn.addEventListener('click', prevImage);
+        nextModalBtn.addEventListener('click', nextImage);
+        modalDots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showModalImage(index);
+                currentImageIndex = index;
             });
+        });
+    }
 
-            nextModalBtn.addEventListener('click', () => {
-                currentImageIndex = (currentImageIndex < currentImages.length - 1) ? currentImageIndex + 1 : 0;
-                showModalImage(currentImageIndex);
-            });
-
-            modalDots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    showModalImage(index);
-                    currentImageIndex = index;
-                });
-            });
+    function generateDots(numDots) {
+        const dotsContainer = document.getElementById('carouselDotsContainer');
+        dotsContainer.innerHTML = '';
+        for (let i = 0; i < numDots; i++) {
+            const dot = document.createElement('span');
+            dot.className = 'dot';
+            if (i === 0) dot.classList.add('active');
+            dotsContainer.appendChild(dot);
         }
+    }
+
+    function prevImage() {
+        currentImageIndex = (currentImageIndex > 0) ? currentImageIndex - 1 : currentImages.length - 1;
+        showModalImage(currentImageIndex);
+    }
+
+    function nextImage() {
+        currentImageIndex = (currentImageIndex < currentImages.length - 1) ? currentImageIndex + 1 : 0;
+        showModalImage(currentImageIndex);
     }
 
     imageModalClose.onclick = function() {
@@ -111,7 +118,6 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.classList.remove('no-scroll');
     };
 
-    // Cerrar el modal al hacer clic en cualquier área fuera del contenido del modal
     window.onclick = function(event) {
         if (event.target === imageModal) {
             imageModal.style.display = 'none';
@@ -152,16 +158,14 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        // Hacer clic en la imagen para abrir el modal
         images.forEach((img, index) => {
             img.addEventListener('click', () => {
                 openImageModal(images, index);
             });
         });
 
-        // Mostrar la primera imagen inicialmente
         showImage(0);
-    }    
+    }
 
     function showPage(page) {
         const rooms = document.querySelectorAll('.room');
