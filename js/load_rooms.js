@@ -29,15 +29,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="carousel-container">
                     <button class="carousel-btn prev-btn">&lt;</button>
                     <img src="data:image/jpeg;base64,${room.imagen}" alt="Room ${index + 1}" class="room-image">
-                    ${room.imagen2 ? `<img src="data:image/jpeg;base64,${room.imagen2}" alt="Room ${index + 1}" class="room-image" style="display: none;">` : ''}
-                    ${room.imagen3 ? `<img src="data:image/jpeg;base64,${room.imagen3}" alt="Room ${index + 1}" class="room-image" style="display: none;">` : ''}
-                    ${room.imagen4 ? `<img src="data:image/jpeg;base64,${room.imagen4}" alt="Room ${index + 1}" class="room-image" style="display: none;">` : ''}
                     <button class="carousel-btn next-btn">&gt;</button>
                     <div class="carousel-dots">
                         <span class="dot active"></span>
-                        ${room.imagen2 ? '<span class="dot"></span>' : ''}
-                        ${room.imagen3 ? '<span class="dot"></span>' : ''}
-                        ${room.imagen4 ? '<span class="dot"></span>' : ''}
                     </div>
                 </div>
                 <div class="room-details">
@@ -48,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
             `;
             roomsSection.appendChild(roomElement);
 
-            setupCarousel(roomElement);
+            setupCarousel(roomElement, room);
         });
 
         showPage(currentPage);
@@ -64,42 +58,48 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function showModalImage(index) {
         if (modalImage && modalDots) {
-            modalImage.src = currentImages[index].src;
+            modalImage.src = currentImages[index];
             modalDots.forEach((dot, i) => {
                 dot.classList.toggle('active', i === index);
             });
         }
     }
 
-    function openImageModal(images, index) {
-        currentImages = images;
-        currentImageIndex = index;
-        generateDots(images.length);
+    function openImageModal(room) {
+        currentImages = [
+            `data:image/jpeg;base64,${room.imagen}`,
+            room.imagen2 ? `data:image/jpeg;base64,${room.imagen2}` : null,
+            room.imagen3 ? `data:image/jpeg;base64,${room.imagen3}` : null,
+            room.imagen4 ? `data:image/jpeg;base64,${room.imagen4}` : null
+        ].filter(Boolean);
+
+        currentImageIndex = 0;
         imageModal.style.display = 'block';
         document.body.classList.add('no-scroll');
+
         prevModalBtn = document.querySelector('#imageModalCarrusel .prev-btn');
         nextModalBtn = document.querySelector('#imageModalCarrusel .next-btn');
-        modalDots = document.querySelectorAll('#carouselDotsContainer .dot');
-        showModalImage(currentImageIndex);
-
-        prevModalBtn.addEventListener('click', prevImage);
-        nextModalBtn.addEventListener('click', nextImage);
-        modalDots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                showModalImage(index);
-                currentImageIndex = index;
-            });
-        });
-    }
-
-    function generateDots(numDots) {
         const dotsContainer = document.getElementById('carouselDotsContainer');
         dotsContainer.innerHTML = '';
-        for (let i = 0; i < numDots; i++) {
+        currentImages.forEach((img, i) => {
             const dot = document.createElement('span');
-            dot.className = 'dot';
+            dot.classList.add('dot');
             if (i === 0) dot.classList.add('active');
             dotsContainer.appendChild(dot);
+        });
+        modalDots = dotsContainer.querySelectorAll('.dot');
+
+        showModalImage(currentImageIndex);
+
+        if (prevModalBtn && nextModalBtn && modalDots) {
+            prevModalBtn.addEventListener('click', prevImage);
+            nextModalBtn.addEventListener('click', nextImage);
+            modalDots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    showModalImage(index);
+                    currentImageIndex = index;
+                });
+            });
         }
     }
 
@@ -125,46 +125,26 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    function setupCarousel(roomElement) {
-        const images = roomElement.querySelectorAll('.room-image');
-        const prevBtn = roomElement.querySelector('.prev-btn');
-        const nextBtn = roomElement.querySelector('.next-btn');
-        const dots = roomElement.querySelectorAll('.dot');
-        let currentIndex = 0;
-
-        function showImage(index) {
-            images.forEach((img, i) => {
-                img.style.display = (i === index) ? 'block' : 'none';
-            });
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === index);
-            });
-        }
-
-        prevBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
-            showImage(currentIndex);
+    function setupCarousel(roomElement, room) {
+        const imageContainer = roomElement.querySelector('.carousel-container');
+        imageContainer.addEventListener('click', () => {
+            openImageModal(room);
         });
 
-        nextBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
-            showImage(currentIndex);
+        const detailsContainer = roomElement.querySelector('.room-details');
+            detailsContainer.addEventListener('click', () => {
+            showSection(detalles); 
         });
+    }
 
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                showImage(index);
-                currentIndex = index;
-            });
+    function showSection(targetId) {
+        const targetSection = document.getElementById(targetId);
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.display = 'none';
         });
-
-        images.forEach((img, index) => {
-            img.addEventListener('click', () => {
-                openImageModal(images, index);
-            });
-        });
-
-        showImage(0);
+        targetSection.style.display = 'block';
+        sessionStorage.setItem('activeSectionId', targetId);
+        updateActiveLink(targetId);
     }
 
     function showPage(page) {

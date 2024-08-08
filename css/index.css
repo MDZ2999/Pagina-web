@@ -82,6 +82,7 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Dos columnas */
     gap: 20px; /* Espacio entre los bloques */
+    min-height: 704px;
 }
 
 .room-section-containerI {
@@ -89,6 +90,7 @@
     padding: 20px;
     border-radius: 20px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
 
 .room-image-containerI,

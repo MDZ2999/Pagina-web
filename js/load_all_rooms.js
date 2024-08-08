@@ -3,26 +3,30 @@ document.addEventListener('DOMContentLoaded', function() {
     const imageModal = document.getElementById('imageModalCarrusel');
     const modalImage = document.getElementById('modalImage');
     const imageModalClose = document.querySelector('.imageModalCarruselClose');
+    const searchForm = document.getElementById('searchForm');
     
     let prevModalBtn, nextModalBtn, modalDots;
     let currentImageIndex = 0;
     let currentImages = [];
 
-    function fetchRooms() {
-        fetch('php/get_all_rooms.php')
-            .then(response => response.json())
-            .then(data => {
-                if (data.error) {
-                    console.error(data.error);
-                } else {
-                    displayRooms(data);
-                }
-            })
-            .catch(error => console.error('Error:', error));
-    }
+    async function fetchRooms(query = '') {
+        const url = query ? `php/search.php?cuarto=${query}` : 'php/get_all_rooms.php';
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+            if (data.error) {
+                console.error(data.error);
+            } else {
+                displayRooms(data);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }    
 
     function displayRooms(rooms) {
         roomsGrid.innerHTML = '';
+        const fragment = document.createDocumentFragment();
         
         rooms.forEach((room, index) => {
             const roomElement = document.createElement('div');
@@ -32,15 +36,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     <div class="carousel-containerI">
                         <button class="carousel-btnI prev-btnI">&lt;</button>
                         <img src="data:image/jpeg;base64,${room.imagen}" alt="Room ${index + 1}" class="roomI-image">
-                        ${room.imagen2 ? `<img src="data:image/jpeg;base64,${room.imagen2}" alt="Room ${index + 1}" class="roomI-image" style="display: none;">` : ''}
-                        ${room.imagen3 ? `<img src="data:image/jpeg;base64,${room.imagen3}" alt="Room ${index + 1}" class="roomI-image" style="display: none;">` : ''}
-                        ${room.imagen4 ? `<img src="data:image/jpeg;base64,${room.imagen4}" alt="Room ${index + 1}" class="roomI-image" style="display: none;">` : ''}
                         <button class="carousel-btnI next-btnI">&gt;</button>
                         <div class="carousel-dotsI">
                             <span class="dotI active"></span>
-                            ${room.imagen2 ? '<span class="dotI"></span>' : ''}
-                            ${room.imagen3 ? '<span class="dotI"></span>' : ''}
-                            ${room.imagen4 ? '<span class="dotI"></span>' : ''}
                         </div>
                     </div>
                 </div>
@@ -50,75 +48,45 @@ document.addEventListener('DOMContentLoaded', function() {
                     <p>Disponibilidad: ${room.disponibilidad == 1 ? 'Sí' : 'No'}</p>
                 </div>
             `;
-            roomsGrid.appendChild(roomElement);
+            fragment.appendChild(roomElement);
 
-            // Añadir eventos de click para el carrusel y los detalles
             setupCarousel(roomElement, room);
         });
+
+        roomsGrid.appendChild(fragment);
     }
 
     function setupCarousel(roomElement, room) {
-        const images = roomElement.querySelectorAll('.roomI-image');
-        const prevBtn = roomElement.querySelector('.prev-btnI');
-        const nextBtn = roomElement.querySelector('.next-btnI');
-        const dots = roomElement.querySelectorAll('.dotI');
-        let currentIndex = 0;
+        const imageContainer = roomElement.querySelector('.room-image-containerI');
 
-        function showImage(index) {
-            images.forEach((img, i) => {
-                img.style.display = (i === index) ? 'block' : 'none';
-            });
-            dots.forEach((dot, i) => {
-                dot.classList.toggle('active', i === index);
-            });
-        }
-
-        prevBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex > 0) ? currentIndex - 1 : images.length - 1;
-            showImage(currentIndex);
+        imageContainer.addEventListener('click', () => {
+            openImageModal(room);
         });
 
-        nextBtn.addEventListener('click', () => {
-            currentIndex = (currentIndex < images.length - 1) ? currentIndex + 1 : 0;
-            showImage(currentIndex);
-        });
-
-        dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                showImage(index);
-                currentIndex = index;
-            });
-        });
-
-        // Hacer clic en la imagen para abrir el modal
-        images.forEach((img, index) => {
-            img.addEventListener('click', () => {
-                openImageModal(images, index);
-            });
-        });
-
-        // Mostrar la primera imagen inicialmente
-        showImage(0);
-
-        // Añadir evento para los detalles del cuarto
         const detailsContainer = roomElement.querySelector('.room-details-containerI');
         detailsContainer.addEventListener('click', () => {
-            checkLoginAndShowSection('nombreDeLaSeccion'); // Cambia 'nombreDeLaSeccion' por el ID de la sección correspondiente
+            checkLoginAndShowSection(detalles); 
         });
     }
 
     function showModalImage(index) {
         if (modalImage && modalDots) {
-            modalImage.src = currentImages[index].src;
+            modalImage.src = currentImages[index];
             modalDots.forEach((dot, i) => {
                 dot.classList.toggle('active', i === index);
             });
         }
     }
 
-    function openImageModal(images, index) {
-        currentImages = images;
-        currentImageIndex = index;
+    function openImageModal(room) {
+        currentImages = [
+            `data:image/jpeg;base64,${room.imagen}`,
+            room.imagen2 ? `data:image/jpeg;base64,${room.imagen2}` : null,
+            room.imagen3 ? `data:image/jpeg;base64,${room.imagen3}` : null,
+            room.imagen4 ? `data:image/jpeg;base64,${room.imagen4}` : null
+        ].filter(Boolean);
+
+        currentImageIndex = 0;
         imageModal.style.display = 'block';
         document.body.classList.add('no-scroll');
 
@@ -127,7 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
         nextModalBtn = document.querySelector('#imageModalCarrusel .next-btn');
         const dotsContainer = document.getElementById('carouselDotsContainer');
         dotsContainer.innerHTML = '';
-        images.forEach((img, i) => {
+        currentImages.forEach((img, i) => {
             const dot = document.createElement('span');
             dot.classList.add('dot');
             if (i === 0) dot.classList.add('active');
@@ -201,6 +169,12 @@ document.addEventListener('DOMContentLoaded', function() {
         sessionStorage.setItem('activeSectionId', targetId);
         updateActiveLink(targetId);
     }
+
+    searchForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const searchQuery = document.querySelector('#searchInput').value;
+        fetchRooms(searchQuery);
+    });
 
     fetchRooms();
 });

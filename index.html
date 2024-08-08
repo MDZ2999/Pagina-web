@@ -60,8 +60,8 @@
         </div>
         <div class="header-right">
             <div class="search-container">
-                <form action="search.php">
-                    <input type="text" placeholder="🔍︎     Search" id="cuarto" name="cuarto">
+                <form id="searchForm">
+                    <input type="text" placeholder="🔍︎     Search" id="searchInput" name="cuarto">
                 </form>
             </div>
         </div>
@@ -196,6 +196,34 @@
             
         </section>
 
+        <section class="section" id="detalles">        <!-- Contenido de la sección Acerca de -->
+            <div class="background-thanks">
+                <div class="thanks-container">
+                    <h1>“Gracias por la preferencia”</h1>
+                    <div class="info-container">
+                        <div class="text-info">
+                            <h2>Datos de la empresa</h2>
+                            <p><strong>Nombre:</strong> MiHabitación</p>
+                            <p><strong>Descripción:</strong> Hospedaje de calidad y comodidad.</p>
+                            <p><strong>Ubicación:</strong> Situada en la zona de San Pablo, Oaxaca</p>
+                            <p><strong>Acerca de nosotros:</strong> Somos un grupo de estudiantes que, con el propósito de ayudar a otros estudiantes, hemos desarrollado esta plataforma para ofrecer habitaciones de calidad y confianza. Nos comprometemos a proporcionar información veraz y actualizada para que encuentres la mejor opción de hospedaje durante tu estancia.</p>
+                            <p><strong>Términos y condiciones</strong></p>
+                        </div>
+                        <div class="image-info">
+                            <img src="img/Equipo.png" alt="Equipo">
+                        </div>
+                    </div>
+                    <div class="social-media-thanks">
+                        <a href="#"><img src="img/instagram.png" alt="Instagram"></a>
+                        <a href="#"><img src="img/whatsapp.png" alt="WhatsApp"></a>
+                        <a href="#"><img src="img/facebook.png" alt="Facebook"></a>
+                        <a href="#"><img src="img/gmail.png" alt="Email"></a>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+
         <!--Fin de los contenedores-->
     </div>
 
@@ -217,7 +245,7 @@
         </div>
     </footer>   
 
-    <!-- Modal para editar perfil -->
+    <!-- Modal para editar avatar y banner del perfil -->
     <div id="editProfileModal" class="editProfileModal">
         <div class="editProfileModal-content">
             <span class="editProfileClose">&times;</span>
@@ -251,13 +279,13 @@
             <form id="editForm">
                 <div class="form-group">
                     <label for="nombres">Nombre:</label>
-                    <input type="text" placeholder="Nombres" id="nombres" name="nombres">
-                    <input type="text" placeholder="Apellido Paterno" id="apellidoP" name="apellidoP">
-                    <input type="text" placeholder="Apellido Materno" id="apellidoM" name="apellidoM">
+                    <input type="text" placeholder="Nombres" id="nombres" name="nombres" title="Hasta 30 caracteres" maxlength="30">
+                    <input type="text" placeholder="Apellido Paterno" id="apellidoP" name="apellidoP" title="Hasta 15 caracteres" maxlength="15">
+                    <input type="text" placeholder="Apellido Materno" id="apellidoM" name="apellidoM" title="Hasta 15 caracteres" maxlength="15">
                 </div>
                 <div class="form-group">
                     <label for="telefono">Teléfono:</label>
-                    <input type="text" id="telefono" name="telefono">
+                    <input type="number" placeholder="Telefono" id="telefono" name="telefono" title="Hasta 15 caracteres" maxlength="15">
                 </div>
                 <div class="modal-buttons">
                     <button type="button" id="cancelButton" class="Cancel-button">Cancelar</button>
@@ -282,7 +310,7 @@
             <form id="editRoomForm" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="tituloEdit">Título:</label>
-                    <input type="text" id="tituloEdit" name="titulo" required>
+                    <input type="text" id="tituloEdit" name="titulo" title="Hasta 100 caracteres" maxlength="100" required>
                 </div>
     
                 <div class="form-group">
@@ -354,7 +382,7 @@
             <form id="registerRoomForm" enctype="multipart/form-data">
                 <div class="form-group">
                     <label for="titulo">Título:</label>
-                    <input type="text" id="titulo" name="titulo" required>
+                    <input type="text" id="titulo" name="titulo" title="Hasta 100 caracteres" maxlength="100" required>
                 </div>
 
                 <div class="form-group">
@@ -448,5 +476,13 @@
         </div>
     </div>
 
+    <script>
+        const telefonoInput = document.getElementById('telefono');
+        telefonoInput.addEventListener('input', function() {
+            if (this.value.length > 15) {
+                this.value = this.value.slice(0, 15);
+            }
+        });
+    </script>
 </body>
 </html>

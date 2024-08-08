@@ -27,8 +27,8 @@
             <div class="login-box" id="loginBox">
                 <form id="loginForm" action="php/login.php" method="post">
                     <label for="login-correo">Ingresa tu cuenta</label>
-                    <input id="login-correo" name="correo" type="email" placeholder="email@gmail.com" pattern=".{1,50}" title="Hasta 50 caracteres" required>
-                    <input id="login-contrasena" name="contrasena" type="password" placeholder="Ingresa tu contraseña" pattern=".{1,60}" title="Hasta 60 caracteres" required>
+                    <input id="login-correo" name="correo" type="email" placeholder="email@gmail.com" title="Hasta 50 caracteres" maxlength="50" required>
+                    <input id="login-contrasena" name="contrasena" type="password" placeholder="Ingresa tu contraseña" title="Hasta 60 caracteres" maxlength="60" required>
                     <button type="submit">INICIAR SESION</button>
                     <button type="button" id="showRegisterForm">CREAR CUENTA</button>
                     <p>By clicking continue, you agree to our <br><a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></p>
@@ -38,12 +38,12 @@
             <div class="register-box" id="registerBox" style="display: none;">
                 <form id="registerForm" action="php/register.php" method="post">
                     <label for="email">Crea tu cuenta</label>
-                    <input id="nombres" name="nombres" type="text" placeholder="Nombres" pattern=".{1,30}" title="Hasta 30 caracteres" required>
-                    <input id="apellidoP" name="apellidoP" type="text" placeholder="Apellido Paterno" pattern=".{1,15}" title="Hasta 15 caracteres" required>
-                    <input id="apellidoM" name="apellidoM" type="text" placeholder="Apellido Materno" pattern=".{1,15}" title="Hasta 15 caracteres" required>
-                    <input id="correoRegistro" name="correo" type="email" placeholder="Correo" pattern=".{1,50}" title="Hasta 50 caracteres" required>
-                    <input id="contrasenaRegistro" name="contrasena" type="password" placeholder="Contraseña" pattern=".{1,60}" title="Hasta 60 caracteres" required>
-                    <input id="telefono" name="telefono" type="number" placeholder="Telefono" pattern=".{1,19}" title="Hasta 19 caracteres" required>
+                    <input id="nombres" name="nombres" type="text" placeholder="Nombres" title="Hasta 30 caracteres" maxlength="30" required>
+                    <input id="apellidoP" name="apellidoP" type="text" placeholder="Apellido Paterno" title="Hasta 15 caracteres" maxlength="15" required>
+                    <input id="apellidoM" name="apellidoM" type="text" placeholder="Apellido Materno" title="Hasta 15 caracteres" maxlength="15" required>
+                    <input id="correoRegistro" name="correo" type="email" placeholder="Correo" title="Hasta 50 caracteres" maxlength="50" required>
+                    <input id="contrasenaRegistro" name="contrasena" type="password" placeholder="Contraseña" title="Hasta 60 caracteres" maxlength="60" required>
+                    <input id="telefono" name="telefono" type="number" placeholder="Telefono" title="Hasta 15 caracteres" required>
                     <button id="createButton" type="submit">CREAR CUENTA</button>
                     <div class="checkbox-container">
                         <input type="checkbox" id="conditionCheckbox">
@@ -72,5 +72,14 @@
         </div>
     </footer>
 
+    <script>
+        const telefonoInput = document.getElementById('telefono');
+
+        telefonoInput.addEventListener('input', function() {
+            if (this.value.length > 15) {
+                this.value = this.value.slice(0, 15);
+            }
+        });
+    </script>
 </body>
 </html>
