@@ -25,6 +25,7 @@
     <script src="js/load_rooms.js"></script>
     <script src="js/load_all_rooms.js"></script>
     <script src="js/edit_room.js"></script>
+    <script src="js/detalles.js"></script>
 </head>
 <body>
     <!-- Encabezado -->
@@ -196,32 +197,42 @@
             
         </section>
 
-        <section class="section" id="detalles">        <!-- Contenido de la sección Acerca de -->
-            <div class="background-thanks">
-                <div class="thanks-container">
-                    <h1>“Gracias por la preferencia”</h1>
-                    <div class="info-container">
-                        <div class="text-info">
-                            <h2>Datos de la empresa</h2>
-                            <p><strong>Nombre:</strong> MiHabitación</p>
-                            <p><strong>Descripción:</strong> Hospedaje de calidad y comodidad.</p>
-                            <p><strong>Ubicación:</strong> Situada en la zona de San Pablo, Oaxaca</p>
-                            <p><strong>Acerca de nosotros:</strong> Somos un grupo de estudiantes que, con el propósito de ayudar a otros estudiantes, hemos desarrollado esta plataforma para ofrecer habitaciones de calidad y confianza. Nos comprometemos a proporcionar información veraz y actualizada para que encuentres la mejor opción de hospedaje durante tu estancia.</p>
-                            <p><strong>Términos y condiciones</strong></p>
-                        </div>
-                        <div class="image-info">
-                            <img src="img/Equipo.png" alt="Equipo">
-                        </div>
-                    </div>
-                    <div class="social-media-thanks">
-                        <a href="#"><img src="img/instagram.png" alt="Instagram"></a>
-                        <a href="#"><img src="img/whatsapp.png" alt="WhatsApp"></a>
-                        <a href="#"><img src="img/facebook.png" alt="Facebook"></a>
-                        <a href="#"><img src="img/gmail.png" alt="Email"></a>
+        <section class="section" id="detalles">        <!-- Contenido de la sección Detalles -->
+            <div class="detallesH">
+                <div class="detallesH-content">
+                    <img src="img/avatar.png" alt="Avatar" class="avatar">
+                    <div class="detallestext-content">
+                        <h1>Habitaciones “El Nogal”</h1>
+                        <p>“Siéntete como en tu casa”</p>
                     </div>
                 </div>
             </div>
-            
+            <div class="detalles-content">
+                <div class="detallescarrusel">
+                    <button class="carousel-btn detalles-prev-btn">&lt;</button>
+                    <img src="data:image/jpeg;base64,imagen" class="detallesimg">
+                    <img src="data:image/jpeg;base64,imagen2" class="detallesimg" style="display: none;">
+                    <img src="data:image/jpeg;base64,imagen3" class="detallesimg" style="display: none;">
+                    <img src="data:image/jpeg;base64,imagen4" class="detallesimg" style="display: none;">
+                    <button class="carousel-btn detalles-next-btn">&gt;</button>
+                    <div class="detalles-dots">
+                        <span class="detalles-dot active"></span>
+                        <span class="detalles-dot"></span>
+                        <span class="detalles-dot"></span>
+                        <span class="detalles-dot"></span>
+                    </div>
+                </div>
+                <div class="detalles-info">
+                    <p>Recamaras: 2</p>
+                    <p>Baño: 1</p>
+                    <p>Amueblado: Cama, silla y mesa de escritorio</p>
+                    <p>Conexión a internet: Sí</p>
+                    <p>Calentador: Sí</p>
+                    <p>Aire acondicionado: No</p>
+                    <p>Pago: Mensual</p>
+                    <img src="img/whatsapp.png" alt="WhatsApp" class="detalles-whatsapp">
+                </div>
+            </div>            
         </section>
 
         <!--Fin de los contenedores-->

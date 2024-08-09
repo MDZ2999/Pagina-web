@@ -1,4 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Verificar si el usuario está autenticado
+    fetch('php/check_session.php')
+        .then(response => response.json())
+        .then(data => {
+            if (data.isLoggedIn) {
+                // Si el usuario está autenticado, cargar la información del propietario
+                loadOwnerInfo();
+            } else {
+                console.log('El usuario no está autenticado, no se cargarán los datos del propietario.');
+            }
+        })
+        .catch(error => console.error('Error al verificar la sesión:', error));
+});
+
+function loadOwnerInfo() {
     fetch('php/get_owner_info.php')
         .then(response => response.json())
         .then(data => {
@@ -14,4 +29,4 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         })
         .catch(error => console.error('Error:', error));
-});
+}

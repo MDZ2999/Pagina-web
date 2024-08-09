@@ -5,7 +5,7 @@ header('Content-Type: application/json');
 
 // Asegúrate de que el usuario esté autenticado y de que el ID del usuario esté en la sesión
 if (!isset($_SESSION['user_id'])) {
-    echo "Error: Usuario no autenticado.";
+    echo json_encode(["error" => "Usuario no autenticado."]);
     exit;
 }
 
@@ -25,7 +25,7 @@ if ($result->num_rows > 0) {
         $rooms[] = $row;
     }
 } else {
-    echo json_encode(array("error" => "No se encontraron cuartos."));
+    echo json_encode(["error" => "No se encontraron cuartos."]);
     $stmt->close();
     $conn->close();
     exit();

@@ -4,6 +4,19 @@ document.addEventListener('DOMContentLoaded', function() {
     const roomsSection = document.getElementById('roomsSection');
     let totalPages = 0;
 
+    // Verificar si el usuario está autenticado
+    fetch('php/check_session.php')
+        .then(response => response.json())
+        .then(data => {
+            if (data.isLoggedIn) {
+                // Si el usuario está autenticado, cargar los cuartos
+                fetchRooms();
+            } else {
+                console.log('Usuario no autenticado.');
+            }
+        })
+        .catch(error => console.error('Error al verificar la sesión:', error));
+
     async function fetchRooms() {
         try {
             const response = await fetch('php/get_user_rooms.php');
@@ -132,8 +145,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
 
         const detailsContainer = roomElement.querySelector('.room-details');
-            detailsContainer.addEventListener('click', () => {
-            showSection(detalles); 
+        detailsContainer.addEventListener('click', () => {
+            showSection('detalles'); 
         });
     }
 
@@ -175,5 +188,4 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    fetchRooms();
 });

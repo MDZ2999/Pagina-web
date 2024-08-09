@@ -586,3 +586,136 @@
     transform: scale(1.1);
 }
 /*?Fin de Acerca de */
+
+/**Seccion Detalles */
+.detallesH {
+    background-image: url('../img/cama2.jpg'); /* Ruta a la imagen de fondo */
+    background-size: cover;
+    background-position: center;
+    height: 254px; /* Ajusta la altura según sea necesario */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+.detallesH::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Ajusta la opacidad para mejor legibilidad */
+    z-index: 1;
+}
+
+.detallesH-content {
+    display: flex;
+    align-items: center;
+    z-index: 2; /* Asegura que el contenido esté por encima de la sombra */
+    width: 100%; /* Asegura que abarque todo el ancho del header */
+    padding-left: 56px; 
+}
+
+.detallestext-content {
+    color: white; /* Asegura que el texto sea blanco */
+    text-align: center;
+}
+
+.detallestext-content h1 {
+    font-family: Judson;
+    width: 731px;
+    height: 49px;
+    margin: 0;
+    font-size: 2em;
+}
+
+.detallestext-content p {
+    font-family: Judson;
+    width: 738px;
+    height: 52px;
+    margin: 5px 0 0;
+    font-size: 1.2em;
+}
+
+.detalles-content {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.detallescarrusel {
+    padding: 20px;
+    background-color: #e0e0e0;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+    border: 5px solid black;
+    width: 514.3px;
+    height: 362px;
+    margin-right: 28px;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.detallesimg {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 50%;
+    outline: none;
+}
+
+.detalles-prev-btn {
+    left: 10px;
+}
+
+.detalles-next-btn {
+    right: 10px;
+}
+
+.detalles-dots {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 5px;
+}
+
+.detalles-dot {
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.detalles-dot.active {
+    background: #6a5acd;
+}
+
+.detalles-info {
+    max-width: 200px;
+}
+
+.detalles-whatsapp {
+    width: 30px;
+    height: 30px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+/**Fin seccion Detalles */

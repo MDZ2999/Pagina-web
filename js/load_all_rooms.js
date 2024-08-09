@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const detailsContainer = roomElement.querySelector('.room-details-containerI');
         detailsContainer.addEventListener('click', () => {
-            checkLoginAndShowSection(detalles); 
+            checkLoginAndShowSection('detalles'); 
         });
     }
 

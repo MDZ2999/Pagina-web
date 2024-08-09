@@ -1,4 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Verificar si el usuario está autenticado
+    fetch('php/check_session.php')
+        .then(response => response.json())
+        .then(data => {
+            if (data.isLoggedIn) {
+                // Si el usuario está autenticado, cargar las imágenes de perfil
+                loadProfileImages();
+            } else {
+                console.log('El usuario no está autenticado, no se cargarán las imágenes de perfil.');
+            }
+        })
+        .catch(error => console.error('Error al verificar la sesión:', error));
+});
+
+function loadProfileImages() {
     fetch('php/get_profile_images.php')
         .then(response => response.json())
         .then(data => {
@@ -17,4 +32,4 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         })
         .catch(error => console.error('Error:', error));
-});
+}
