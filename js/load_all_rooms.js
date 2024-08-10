@@ -46,6 +46,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     <h4>${room.titulo}</h4>
                     <p>Servicios: ${room.servicios}</p>
                     <p>Disponibilidad: ${room.disponibilidad == 1 ? 'Sí' : 'No'}</p>
+                    <p hidden>ID Cuarto: ${room.id_cuarto}</p>
+                    <p hidden>ID Usuario: ${room.id_usuario}</p>
                 </div>
             `;
             fragment.appendChild(roomElement);
@@ -65,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const detailsContainer = roomElement.querySelector('.room-details-containerI');
         detailsContainer.addEventListener('click', () => {
-            checkLoginAndShowSection('detalles'); 
+            loadRoomDetails(room.id_cuarto);
         });
     }
 
@@ -137,38 +139,6 @@ document.addEventListener('DOMContentLoaded', function() {
             document.body.classList.remove('no-scroll');
         }
     };
-
-    function checkLoginAndShowSection(sectionId) {
-        $.ajax({
-            url: 'php/check_session.php',
-            dataType: 'json',
-            success: function(response) {
-                if (response.isLoggedIn) {
-                    showSection(sectionId);
-                } else {
-                    Swal.fire({
-                        title: 'Acceso Restringido',
-                        text: 'Por favor, inicia sesión para acceder a esta sección.',
-                        icon: 'warning',
-                        confirmButtonText: 'Iniciar Sesión',
-                        preConfirm: () => {
-                            window.location.href = 'login-register.html';
-                        }
-                    });
-                }
-            }
-        });
-    }
-
-    function showSection(targetId) {
-        const targetSection = document.getElementById(targetId);
-        document.querySelectorAll('.section').forEach(section => {
-            section.style.display = 'none';
-        });
-        targetSection.style.display = 'block';
-        sessionStorage.setItem('activeSectionId', targetId);
-        updateActiveLink(targetId);
-    }
 
     searchForm.addEventListener('submit', function(event) {
         event.preventDefault();

@@ -305,6 +305,7 @@
 
 .room-details {
     padding: 10px;
+    cursor: pointer;
 }
 
 .room-details h4 {
@@ -599,6 +600,15 @@
     align-items: center; 
 }
 
+.detallesavatar {
+    width: 231px; /* Tamaño fijo del avatar */
+    height: 224px; /* Tamaño fijo del avatar */
+    border-radius: 50%; /* Hace el avatar circular */
+    border: 1px solid white;
+    margin-right: 107px; /* Separación entre el avatar y el texto */
+    object-fit: cover; /* Ajusta la imagen para que cubra el contenedor sin distorsionarse */
+}
+
 .detallesH::before {
     content: "";
     position: absolute;
@@ -666,7 +676,7 @@
     border-radius: 10px;
 }
 
-.carousel-btn {
+.detallescarousel-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);

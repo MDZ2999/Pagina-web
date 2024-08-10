@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_id'])) {
 $id_usuario = $_SESSION['user_id'];
 
 // Consulta para obtener los cuartos del usuario incluyendo imagen2, imagen3 e imagen4
-$sql = "SELECT titulo, servicios, disponibilidad, imagen, imagen2, imagen3, imagen4 FROM cuartos WHERE id_usuario = ?";
+$sql = "SELECT id_cuarto, id_usuario, titulo, servicios, disponibilidad, imagen, imagen2, imagen3, imagen4 FROM cuartos WHERE id_usuario = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $id_usuario);
 $stmt->execute();

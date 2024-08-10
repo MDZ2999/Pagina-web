@@ -51,6 +51,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     <h4>${room.titulo}</h4>
                     <p>Servicios: ${room.servicios}</p>
                     <p>Disponibilidad: ${room.disponibilidad == 1 ? 'Sí' : 'No'}</p>
+                    <p hidden>ID Cuarto: ${room.id_cuarto}</p>
+                    <p hidden>ID Usuario: ${room.id_usuario}</p>
                 </div>
             `;
             roomsSection.appendChild(roomElement);
@@ -146,18 +148,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const detailsContainer = roomElement.querySelector('.room-details');
         detailsContainer.addEventListener('click', () => {
-            showSection('detalles'); 
+            loadRoomDetails(room.id_cuarto);
         });
-    }
-
-    function showSection(targetId) {
-        const targetSection = document.getElementById(targetId);
-        document.querySelectorAll('.section').forEach(section => {
-            section.style.display = 'none';
-        });
-        targetSection.style.display = 'block';
-        sessionStorage.setItem('activeSectionId', targetId);
-        updateActiveLink(targetId);
     }
 
     function showPage(page) {

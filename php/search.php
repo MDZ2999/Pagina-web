@@ -30,6 +30,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['cuarto'])) {
                 'imagen2' => base64_encode($row['imagen2']),
                 'imagen3' => base64_encode($row['imagen3']),
                 'imagen4' => base64_encode($row['imagen4']),
+                'id_cuarto' => $row['id_cuarto'],
+                'id_usuario' => $row['id_usuario'],
             ];
         }
     }

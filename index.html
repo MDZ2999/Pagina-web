@@ -22,10 +22,10 @@
     <script src="js/load_owner_info.js"></script>
     <script src="js/roomNavigation.js"></script>
     <script src="js/update_user_info.js"></script>
+    <script src="js/load_details.js"></script>
     <script src="js/load_rooms.js"></script>
     <script src="js/load_all_rooms.js"></script>
     <script src="js/edit_room.js"></script>
-    <script src="js/detalles.js"></script>
 </head>
 <body>
     <!-- Encabezado -->
@@ -200,7 +200,7 @@
         <section class="section" id="detalles">        <!-- Contenido de la sección Detalles -->
             <div class="detallesH">
                 <div class="detallesH-content">
-                    <img src="img/avatar.png" alt="Avatar" class="avatar">
+                    <img src="img/avatar.png" alt="Avatar" class="detallesavatar">
                     <div class="detallestext-content">
                         <h1>Habitaciones “El Nogal”</h1>
                         <p>“Siéntete como en tu casa”</p>
@@ -209,12 +209,12 @@
             </div>
             <div class="detalles-content">
                 <div class="detallescarrusel">
-                    <button class="carousel-btn detalles-prev-btn">&lt;</button>
+                    <button class="detallescarousel-btn detalles-prev-btn">&lt;</button>
                     <img src="data:image/jpeg;base64,imagen" class="detallesimg">
                     <img src="data:image/jpeg;base64,imagen2" class="detallesimg" style="display: none;">
                     <img src="data:image/jpeg;base64,imagen3" class="detallesimg" style="display: none;">
                     <img src="data:image/jpeg;base64,imagen4" class="detallesimg" style="display: none;">
-                    <button class="carousel-btn detalles-next-btn">&gt;</button>
+                    <button class="detallescarousel-btn detalles-next-btn">&gt;</button>
                     <div class="detalles-dots">
                         <span class="detalles-dot active"></span>
                         <span class="detalles-dot"></span>
@@ -223,17 +223,14 @@
                     </div>
                 </div>
                 <div class="detalles-info">
-                    <p>Recamaras: 2</p>
-                    <p>Baño: 1</p>
-                    <p>Amueblado: Cama, silla y mesa de escritorio</p>
-                    <p>Conexión a internet: Sí</p>
-                    <p>Calentador: Sí</p>
-                    <p>Aire acondicionado: No</p>
-                    <p>Pago: Mensual</p>
+                    <p>Descripcion: </p>
+                    <p>Servicios: </p>
+                    <p>Precio: </p>
+                    <p>Direccion: </p>
                     <img src="img/whatsapp.png" alt="WhatsApp" class="detalles-whatsapp">
                 </div>
-            </div>            
-        </section>
+            </div>
+        </section>       
 
         <!--Fin de los contenedores-->
     </div>
@@ -296,7 +293,7 @@
                 </div>
                 <div class="form-group">
                     <label for="telefono">Teléfono:</label>
-                    <input type="number" placeholder="Telefono" id="telefono" name="telefono" title="Hasta 15 caracteres" maxlength="15">
+                    <input type="varchar" placeholder="Telefono" id="telefono" name="telefono" title="Hasta 10 caracteres" maxlength="10">
                 </div>
                 <div class="modal-buttons">
                     <button type="button" id="cancelButton" class="Cancel-button">Cancelar</button>
@@ -487,13 +484,5 @@
         </div>
     </div>
 
-    <script>
-        const telefonoInput = document.getElementById('telefono');
-        telefonoInput.addEventListener('input', function() {
-            if (this.value.length > 15) {
-                this.value = this.value.slice(0, 15);
-            }
-        });
-    </script>
 </body>
 </html>

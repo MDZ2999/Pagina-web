@@ -43,7 +43,7 @@
                     <input id="apellidoM" name="apellidoM" type="text" placeholder="Apellido Materno" title="Hasta 15 caracteres" maxlength="15" required>
                     <input id="correoRegistro" name="correo" type="email" placeholder="Correo" title="Hasta 50 caracteres" maxlength="50" required>
                     <input id="contrasenaRegistro" name="contrasena" type="password" placeholder="Contraseña" title="Hasta 60 caracteres" maxlength="60" required>
-                    <input id="telefono" name="telefono" type="number" placeholder="Telefono" title="Hasta 15 caracteres" required>
+                    <input id="telefono" name="telefono" type="varchar" placeholder="Telefono" title="Hasta 10 caracteres" maxlength="10" required>
                     <button id="createButton" type="submit">CREAR CUENTA</button>
                     <div class="checkbox-container">
                         <input type="checkbox" id="conditionCheckbox">
@@ -71,15 +71,5 @@
             <img src="img/gmail.png" alt="Gmail Logo">
         </div>
     </footer>
-
-    <script>
-        const telefonoInput = document.getElementById('telefono');
-
-        telefonoInput.addEventListener('input', function() {
-            if (this.value.length > 15) {
-                this.value = this.value.slice(0, 15);
-            }
-        });
-    </script>
 </body>
 </html>
