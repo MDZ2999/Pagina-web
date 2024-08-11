@@ -67,7 +67,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const detailsContainer = roomElement.querySelector('.room-details-containerI');
         detailsContainer.addEventListener('click', () => {
-            loadRoomDetails(room.id_cuarto);
+            console.log('ID del cuarto:', room.id_cuarto);
+            console.log('ID del usuario:', room.id_usuario);
+            loadRoomDetails(room.id_cuarto, room.id_usuario);
         });
     }
 

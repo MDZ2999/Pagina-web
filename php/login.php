@@ -43,5 +43,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 $conn->close(); // Cierra la conexión a la base de datos
 
-
 ?>

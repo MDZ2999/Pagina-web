@@ -1,66 +1,80 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 require_once 'conection.php';
 header('Content-Type: application/json');
 
+$response = [];  // Inicializar un arreglo para almacenar la respuesta
+
 if (isset($_GET['id_cuarto'])) {
-    $id_cuarto = intval($_GET['id_cuarto']);
+    $response["cuarto_valido"] = true;
 } else {
-    echo json_encode(['error' => 'ID del cuarto no proporcionado.']);
-    exit; // Es importante salir del script si no se proporciona el ID
+    $response["error"] = "Cuarto no valido.";
+    echo json_encode($response);
+    exit();  // Detener la ejecución si falta el ID del cuarto
 }
 
-// Consulta para obtener los detalles del cuarto
-$sqlCuarto = "SELECT titulo, descripcion, servicios, precio, direccion, imagen, imagen2, imagen3, imagen4, id_usuario FROM cuartos WHERE id_cuarto = ?";
+if (isset($_GET['id_usuario'])) {
+    $response["usuario_valido"] = true;
+} else {
+    $response["error"] = "Usuario no valido.";
+    echo json_encode($response);
+    exit();  // Detener la ejecución si falta el ID del usuario
+}
+
+$id_cuarto = intval($_GET['id_cuarto']);
+$id_usuario = intval($_GET['id_usuario']);
+
+// Ejecutar la consulta para el cuarto
+$sqlCuarto = "SELECT titulo, descripcion, servicios, precio, direccion, imagen, imagen2, imagen3, imagen4 FROM cuartos WHERE id_cuarto = ?";
 $stmtCuarto = $conn->prepare($sqlCuarto);
-
-if (!$stmtCuarto) {
-    echo json_encode(['error' => 'Error en la preparación de la consulta de cuartos.']);
-    $conn->close();
-    exit;
-}
-
 $stmtCuarto->bind_param("i", $id_cuarto);
 $stmtCuarto->execute();
 $resultCuarto = $stmtCuarto->get_result();
 
+$cuarto = null;
 if ($resultCuarto->num_rows > 0) {
     $cuarto = $resultCuarto->fetch_assoc();
-
-    // Consulta para obtener la información del propietario
-    $id_usuario = $cuarto['id_usuario'];
-    $sqlPropietario = "SELECT nombres, imagen FROM info_usuarios WHERE id_usuario = ?";
-    $stmtPropietario = $conn->prepare($sqlPropietario);
-
-    if (!$stmtPropietario) {
-        echo json_encode(['error' => 'Error en la preparación de la consulta de propietario.']);
-        $stmtCuarto->close();
-        $conn->close();
-        exit;
-    }
-
-    $stmtPropietario->bind_param("i", $id_usuario);
-    $stmtPropietario->execute();
-    $resultPropietario = $stmtPropietario->get_result();
-
-    if ($resultPropietario->num_rows > 0) {
-        $propietario = $resultPropietario->fetch_assoc();
-
-        // Enviar la respuesta JSON
-        echo json_encode([
-            'cuarto' => $cuarto,
-            'propietario' => $propietario
-        ]);
-        exit;
-
-    } else {
-        echo json_encode(['error' => 'Propietario no encontrado.']);
-    }
-
-    $stmtPropietario->close();
+    $response["cuarto"] = [
+        "titulo" => $cuarto['titulo'],
+        "descripcion" => $cuarto['descripcion'],
+        "servicios" => $cuarto['servicios'],
+        "precio" => $cuarto['precio'],
+        "direccion" => $cuarto['direccion'],
+        "imagen" => base64_encode($cuarto['imagen']),
+        "imagen2" => base64_encode($cuarto['imagen2']),
+        "imagen3" => base64_encode($cuarto['imagen3']),
+        "imagen4" => base64_encode($cuarto['imagen4'])
+    ];
 } else {
-    echo json_encode(['error' => 'Cuarto no encontrado.']);
+    $response["error"] = "No se encontraron datos del cuarto.";
 }
 
+// Liberar el resultado de la consulta del cuarto antes de continuar
+$stmtCuarto->free_result();
 $stmtCuarto->close();
+
+// Ejecutar la consulta para el usuario
+$sqlUsuario = "SELECT nombres, apellidoP, apellidoM, imagen, telefono, correo FROM info_usuarios WHERE id_usuario = ?";
+$stmtUsuario = $conn->prepare($sqlUsuario);
+$stmtUsuario->bind_param("i", $id_usuario);
+$stmtUsuario->execute();
+$resultUsuario = $stmtUsuario->get_result();
+
+if ($resultUsuario->num_rows > 0) {
+    $usuario = $resultUsuario->fetch_assoc();
+    $response["usuario"] = [
+        "imagen" => $usuario['imagen'] ? base64_encode($usuario['imagen']) : null,    
+        "nombreCompleto" => $usuario['nombres'] . ' ' . $usuario['apellidoP'] . ' ' . $usuario['apellidoM'],
+        "telefono" => $usuario['telefono'],
+        "correo" => $usuario['correo']
+    ];
+} else {
+    $response["error"] = "No se encontro Avatar y no se encontraron datos del usuario.";
+}
+
+$stmtUsuario->close();
 $conn->close();
+
+echo json_encode($response);
 ?>
