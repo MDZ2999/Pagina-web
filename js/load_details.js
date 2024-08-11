@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     window.loadRoomDetails = function (id_cuarto, id_usuario) {
+        // Almacenar los IDs antes de mostrar la sección
+        localStorage.setItem('currentCuartoId', id_cuarto);
+        localStorage.setItem('currentUsuarioId', id_usuario);
         $.ajax({
             url: 'php/check_session.php',
             dataType: 'json',
@@ -30,7 +33,16 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }
-    
+
+    // Verificar si hay IDs almacenados en localStorage
+    const storedCuartoId = localStorage.getItem('currentCuartoId');
+    const storedUsuarioId = localStorage.getItem('currentUsuarioId');
+
+    if (storedCuartoId && storedUsuarioId) {
+        // Cargar los detalles del cuarto almacenado
+        loadRoomDetails(storedCuartoId, storedUsuarioId);
+    }
+
     function showDetails(id_cuarto, id_usuario) {
         console.log('ID del cuarto:', id_cuarto);
         console.log('ID del usuario:', id_usuario);
@@ -122,6 +134,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
                         // Mostrar la primera imagen por defecto
                         showImage(0);
+                    } else {
+                        // Si solo hay una imagen, esconder los botones de navegación
+                        carruselContainer.querySelector('.detalles-prev-btn').style.display = 'none';
+                        carruselContainer.querySelector('.detalles-next-btn').style.display = 'none';
+                        
+                        // Mostrar la única imagen disponible
+                        carruselContainer.querySelector('.detallesimg').style.display = 'block';
                     }
                 }
             })
@@ -153,9 +172,15 @@ document.addEventListener('DOMContentLoaded', function () {
         const links = document.querySelectorAll('.nav-links li a');
         links.forEach(link => {
             link.classList.remove('active');
-            if (link.getAttribute('data-section') === targetId) {
+            
+            // Si la sección activa es 'detalles', activar 'perfil'
+            if (targetId === 'detalles' && link.getAttribute('data-section') === 'perfil') {
+                link.classList.add('active');
+            }
+            // Activar el enlace normalmente para las demás secciones
+            else if (link.getAttribute('data-section') === targetId) {
                 link.classList.add('active');
             }
         });
-    }
+    }    
 });
