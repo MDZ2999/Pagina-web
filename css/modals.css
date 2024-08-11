@@ -445,9 +445,8 @@
     background-color: #fefefe;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
-    max-width: 700px;
-    max-height: 80vh;
+    width: 700px;
+    height: 80%;
     border-radius: 10px;
     position: relative;
     text-align: center;
@@ -455,9 +454,9 @@
 
 .imageModalCarruselClose {
     position: absolute;
-    top: 10px;
+    top: 20px;
     right: 25px;
-    color: #aaa;
+    color: #030303;
     font-size: 28px;
     font-weight: bold;
     cursor: pointer;
@@ -471,8 +470,8 @@
 }
 
 .modal-room-image {
-    max-width: 100%;
-    max-height: 60vh;
+    width: 100%;
+    height: 100%;
     display: block;
     margin: 0 auto;
 }

@@ -672,7 +672,7 @@
 
 .detallesimg {
     width: 100%;
-    height: auto;
+    height: 100%;
     border-radius: 10px;
 }
 
@@ -709,7 +709,7 @@
 .detalles-dot {
     width: 10px;
     height: 10px;
-    background: white;
+    background: rgb(0, 0, 0);
     border-radius: 50%;
     cursor: pointer;
 }
