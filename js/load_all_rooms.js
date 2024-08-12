@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <div class="room-details-containerI">
                     <h4>${room.titulo}</h4>
                     <p>Servicios: ${room.servicios}</p>
+                    <p>Precio $: ${room.precio}</p>
                     <p>Disponibilidad: ${room.disponibilidad == 1 ? 'Sí' : 'No'}</p>
                     <p hidden>ID Cuarto: ${room.id_cuarto}</p>
                     <p hidden>ID Usuario: ${room.id_usuario}</p>

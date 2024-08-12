@@ -62,11 +62,30 @@ document.addEventListener('DOMContentLoaded', function () {
 
                     // Actualizar la información del cuarto
                     document.getElementById('detallesTitulo').textContent = data.cuarto.titulo;
+                    document.getElementById('detallesPropietario').textContent = data.usuario.nombreCompleto;
                     document.getElementById('detallesDescripcion').textContent = data.cuarto.descripcion;
                     document.getElementById('detallesServicios').textContent = data.cuarto.servicios;
                     document.getElementById('detallesPrecio').textContent = data.cuarto.precio;
                     document.getElementById('detallesDireccion').textContent = data.cuarto.direccion;
 
+                    // Actualizar el enlace de WhatsApp
+                    const whatsappLink = document.querySelector('.detalles-whatsapp').parentNode;
+                    if (data.usuario.whatsapp) {
+                        whatsappLink.href = `${data.usuario.whatsapp}`;
+                        whatsappLink.onclick = null; // Remover cualquier evento onclick existente
+                    } else {
+                        whatsappLink.href = "#"; // Prevent default behavior
+                        whatsappLink.onclick = function(event) {
+                            event.preventDefault(); // Prevenir que la página se recargue
+                            Swal.fire({
+                                title: 'Para más información',
+                                html: `Se contactara con: ${data.usuario.nombreCompleto} <br></br> Al correo: ${data.usuario.correo} <br></br> Tambien puede marcar al ${data.usuario.telefono} o haz click <a href="https://wa.me/${data.usuario.telefono}" target="_blank">aquí</a>`,
+                                icon: 'info',
+                                confirmButtonText: 'Aceptar'
+                            });
+                        };
+                    }
+                    
                     // Limpiar el carrusel y los puntos antes de crear nuevo contenido
                     carruselContainer.innerHTML = `
                         <button class="detallescarousel-btn detalles-prev-btn">&lt;</button>

@@ -43,7 +43,7 @@ $imagen4 = isset($_FILES['imagen4']['tmp_name']) && $_FILES['imagen4']['tmp_name
 
 // Preparar y vincular
 $stmt = $conn->prepare("INSERT INTO cuartos (id_usuario, titulo, descripcion, servicios, precio, disponibilidad, direccion, imagen, imagen2, imagen3, imagen4) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-$stmt->bind_param("isssdsissss", $id_usuario, $titulo, $descripcion, $servicios, $precio, $disponibilidad, $direccion, $imagen, $imagen2, $imagen3, $imagen4);
+$stmt->bind_param("isssdssssss", $id_usuario, $titulo, $descripcion, $servicios, $precio, $disponibilidad, $direccion, $imagen, $imagen2, $imagen3, $imagen4);
 
 // Ejecutar la declaración
 if ($stmt->execute()) {

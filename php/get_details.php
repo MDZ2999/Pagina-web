@@ -28,6 +28,11 @@ $id_usuario = intval($_GET['id_usuario']);
 // Ejecutar la consulta para el cuarto
 $sqlCuarto = "SELECT titulo, descripcion, servicios, precio, direccion, imagen, imagen2, imagen3, imagen4 FROM cuartos WHERE id_cuarto = ?";
 $stmtCuarto = $conn->prepare($sqlCuarto);
+if (!$stmtCuarto) {
+    $response["error"] = "Error en la preparación de la consulta: " . $conn->error;
+    echo json_encode($response);
+    exit();
+}
 $stmtCuarto->bind_param("i", $id_cuarto);
 $stmtCuarto->execute();
 $resultCuarto = $stmtCuarto->get_result();
@@ -41,10 +46,10 @@ if ($resultCuarto->num_rows > 0) {
         "servicios" => $cuarto['servicios'],
         "precio" => $cuarto['precio'],
         "direccion" => $cuarto['direccion'],
-        "imagen" => base64_encode($cuarto['imagen']),
-        "imagen2" => base64_encode($cuarto['imagen2']),
-        "imagen3" => base64_encode($cuarto['imagen3']),
-        "imagen4" => base64_encode($cuarto['imagen4'])
+        "imagen" => $cuarto['imagen'] ? base64_encode($cuarto['imagen']) : null,
+        "imagen2" => $cuarto['imagen2'] ? base64_encode($cuarto['imagen2']) : null,
+        "imagen3" => $cuarto['imagen3'] ? base64_encode($cuarto['imagen3']) : null,
+        "imagen4" => $cuarto['imagen4'] ? base64_encode($cuarto['imagen4']) : null
     ];
 } else {
     $response["error"] = "No se encontraron datos del cuarto.";
@@ -55,8 +60,13 @@ $stmtCuarto->free_result();
 $stmtCuarto->close();
 
 // Ejecutar la consulta para el usuario
-$sqlUsuario = "SELECT nombres, apellidoP, apellidoM, imagen, telefono, correo FROM info_usuarios WHERE id_usuario = ?";
+$sqlUsuario = "SELECT nombres, apellidoP, apellidoM, imagen, telefono, correo, whatsapp FROM info_usuarios WHERE id_usuario = ?";
 $stmtUsuario = $conn->prepare($sqlUsuario);
+if (!$stmtUsuario) {
+    $response["error"] = "Error en la preparación de la consulta: " . $conn->error;
+    echo json_encode($response);
+    exit();
+}
 $stmtUsuario->bind_param("i", $id_usuario);
 $stmtUsuario->execute();
 $resultUsuario = $stmtUsuario->get_result();
@@ -67,10 +77,11 @@ if ($resultUsuario->num_rows > 0) {
         "imagen" => $usuario['imagen'] ? base64_encode($usuario['imagen']) : null,    
         "nombreCompleto" => $usuario['nombres'] . ' ' . $usuario['apellidoP'] . ' ' . $usuario['apellidoM'],
         "telefono" => $usuario['telefono'],
-        "correo" => $usuario['correo']
+        "correo" => $usuario['correo'],
+        "whatsapp" => $usuario['whatsapp']
     ];
 } else {
-    $response["error"] = "No se encontro Avatar y no se encontraron datos del usuario.";
+    $response["error"] = "No se encontraron datos del usuario.";
 }
 
 $stmtUsuario->close();
