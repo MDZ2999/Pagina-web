@@ -153,6 +153,9 @@ document.addEventListener('DOMContentLoaded', function () {
         // Verifica si se está saliendo de la sección "detalles"
         const currentActiveSection = document.querySelector('.section[style="display: block;"]');
         if (currentActiveSection && currentActiveSection.id === 'detalles' && targetId !== 'detalles') {
+            // Limpiar el localStorage cuando se sale de "detalles"
+            localStorage.removeItem('currentCuartoId');
+            localStorage.removeItem('currentUsuarioId');
             // Forzar la recarga de la página si se sale de "detalles"
             location.reload(true); // true para recarga forzada (similar a Ctrl+F5)
             return;
@@ -183,4 +186,13 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
     }    
+
+    // Limpiar el localStorage cuando se cierra la página, excepto si se está en "detalles"
+    window.addEventListener('beforeunload', function () {
+        const activeSection = sessionStorage.getItem('activeSectionId');
+        if (activeSection !== 'detalles') {
+            localStorage.removeItem('currentCuartoId');
+            localStorage.removeItem('currentUsuarioId');
+        }
+    });
 });

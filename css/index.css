@@ -725,9 +725,10 @@
 }
 
 .detalles-whatsapp {
-    width: 30px;
-    height: 30px;
+    width: 70px;
+    height: 40px;
     margin-top: 10px;
     cursor: pointer;
+    border-radius: 50%;
 }
 /**Fin seccion Detalles */
