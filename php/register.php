@@ -21,13 +21,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $apellidoM = $_POST['apellidoM'];
     $correo = $_POST['correo'];
     $telefono = $_POST['telefono'];
+    $whatsapp = !empty($_POST['whatsapp']) ? $_POST['whatsapp'] : null; // Si está vacío, se asigna null
     $contraseña = $_POST['contrasena'];
     $hash_contraseña = password_hash($contraseña, PASSWORD_BCRYPT); // Hashea la contraseña utilizando BCRYPT
 
     // Prepara la consulta SQL para insertar los datos en la base de datos
-    $sql = "INSERT INTO info_usuarios (nombres, apellidoP, apellidoM, correo, telefono, contrasena) VALUES (?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO info_usuarios (nombres, apellidoP, apellidoM, correo, telefono, whatsapp, contrasena) VALUES (?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql); // Prepara la consulta
-    $stmt->bind_param("ssssss", $nombres, $apellidoP, $apellidoM, $correo, $telefono, $hash_contraseña); // Vincula los parámetros
+    $stmt->bind_param("sssssss", $nombres, $apellidoP, $apellidoM, $correo, $telefono, $whatsapp, $hash_contraseña); // Vincula los parámetros
 
     // Ejecuta la consulta y verifica si fue exitosa
     if ($stmt->execute()) {

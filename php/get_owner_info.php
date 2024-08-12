@@ -10,7 +10,7 @@ if (!isset($_SESSION['user_id'])) {
 $id_usuario = $_SESSION['user_id'];
 
 // Consulta para obtener los datos del usuario
-$sql = "SELECT nombres, apellidoP, apellidoM, telefono, correo FROM info_usuarios WHERE id_usuario = ?";
+$sql = "SELECT nombres, apellidoP, apellidoM, telefono, correo, whatsapp FROM info_usuarios WHERE id_usuario = ?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("i", $id_usuario);
 $stmt->execute();
@@ -21,11 +21,13 @@ if ($result->num_rows > 0) {
     $nombreCompleto = $row['nombres'] . ' ' . $row['apellidoP'] . ' ' . $row['apellidoM'];
     $telefono = $row['telefono'];
     $correo = $row['correo'];
+    $whatsapp = $row['whatsapp'];
 
     echo json_encode([
         "nombreCompleto" => $nombreCompleto,
         "telefono" => $telefono,
-        "correo" => $correo
+        "correo" => $correo,
+        "whatsapp" => $whatsapp
     ]);
 } else {
     echo json_encode(["error" => "No se encontraron datos del usuario."]);

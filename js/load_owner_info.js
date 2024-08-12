@@ -24,6 +24,7 @@ function loadOwnerInfo() {
                 document.getElementById('nombreUsuario').textContent = data.nombreCompleto;
                 document.getElementById('telefonoUsuario').textContent = data.telefono;
                 document.getElementById('correoUsuario').textContent = data.correo;
+                document.getElementById('whatsappUsuario').textContent = data.whatsapp;
                 // Para dirección, actualizar después
                 // document.getElementById('direccionUsuario').textContent = data.direccion;
             }

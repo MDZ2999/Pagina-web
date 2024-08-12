@@ -20,6 +20,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     document.getElementById('apellidoM').value = nombreArray[2] || '';
 
                     document.getElementById('telefono').value = data.telefono;
+                    document.getElementById('whatsapp').value = data.whatsapp;
                 }
             })
             .catch(error => console.error('Error:', error));
@@ -69,6 +70,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Actualizar los datos en el contenedor principal
                 document.getElementById('editnombreUsuario').textContent = formData.get('nombres') + ' ' + formData.get('apellidoP') + ' ' + formData.get('apellidoM');
                 document.getElementById('editTelefonoUsuario').textContent = formData.get('telefono');
+                document.getElementById('editwhatsappUsuario').textContent = formData.get('whatsapp');
             } else {
                 Swal.fire({
                     title: 'Error',

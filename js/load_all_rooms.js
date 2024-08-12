@@ -146,7 +146,38 @@ document.addEventListener('DOMContentLoaded', function() {
         event.preventDefault();
         const searchQuery = document.querySelector('#searchInput').value;
         fetchRooms(searchQuery);
+        // Si no estamos en la sección "inicio", cambiar a esa sección
+        const currentActiveSection = document.querySelector('.section[style="display: block;"]');
+        if (currentActiveSection && currentActiveSection.id !== 'inicio') {
+            showSection('inicio');  // Cambia a la sección "inicio"
+        }
     });
+
+    function showSection(targetId) {
+        const targetSection = document.getElementById(targetId);
+        document.querySelectorAll('.section').forEach(section => {
+            section.style.display = 'none';
+        });
+        targetSection.style.display = 'block';
+        sessionStorage.setItem('activeSectionId', targetId);
+        updateActiveLink(targetId);
+    }
+
+    function updateActiveLink(targetId) {
+        const links = document.querySelectorAll('.nav-links li a');
+        links.forEach(link => {
+            link.classList.remove('active');
+            
+            // Si la sección activa es 'detalles', activar 'perfil'
+            if (targetId === 'inicio' && link.getAttribute('data-section') === 'inicio') {
+                link.classList.add('active');
+            }
+            // Activar el enlace normalmente para las demás secciones
+            else if (link.getAttribute('data-section') === targetId) {
+                link.classList.add('active');
+            }
+        });
+    }
 
     fetchRooms();
 });

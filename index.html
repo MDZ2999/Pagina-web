@@ -26,6 +26,7 @@
     <script src="js/load_rooms.js"></script>
     <script src="js/load_all_rooms.js"></script>
     <script src="js/edit_room.js"></script>
+    <script src="js/delete.js"></script>
 </head>
 <body>
     <!-- Encabezado -->
@@ -119,6 +120,7 @@
                     <p>Nombre: <span id="nombreUsuario"></span></p>
                     <p>Teléfono: <span id="telefonoUsuario"></span></p>
                     <p>Correo Electrónico: <span id="correoUsuario"></span></p>
+                    <p>WhatsApp: <span id="whatsappUsuario"></span></p>
                 </div>                
                 <div class="room-nav-buttons">
                     <button class="room-nav-button room-left-button" onclick="previousPage()" disabled>&lt;</button>
@@ -151,6 +153,7 @@
                         <p>Teléfono: <span id="editTelefonoUsuario"></span></p>
                         <p>Dirección: <span id="editdireccionUsuario"></span></p>
                         <p>Correo Electrónico: <span id="editcorreoUsuario"></span></p>
+                        <p>WhatsApp: <span id="editwhatsappUsuario"></span></p>
                     </div>
                     <div class="image-placeholder">
                         <div class="image-container" onclick="openEditRoomModal()">
@@ -164,7 +167,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="save-button">Guardar</button>
+                <button class="delete-button">Eliminar</button>
             </div>                        
 
         </section>
@@ -187,9 +190,9 @@
                         </div>
                     </div>
                     <div class="social-media-thanks">
-                        <a href="#"><img src="img/instagram.png" alt="Instagram"></a>
-                        <a href="#"><img src="img/whatsapp.png" alt="WhatsApp"></a>
-                        <a href="#"><img src="img/facebook.png" alt="Facebook"></a>
+                        <a href="https://www.instagram.com/hutron1?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="><img src="img/instagram.png" alt="Instagram"></a>
+                        <a href="https://wa.link/gqtzgj"><img src="img/whatsapp.png" alt="WhatsApp"></a>
+                        <a href="https://www.facebook.com/profile.php?id=61564360523875"><img src="img/facebook.png" alt="Facebook"></a>
                         <a href="#"><img src="img/gmail.png" alt="Email"></a>
                     </div>
                 </div>
@@ -242,8 +245,12 @@
             <a href="https://www.instagram.com/hutron1?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==">
                 <img src="img/instagram.png" alt="instagram Logo">
             </a>
-            <img src="img/whatsapp.png" alt="whatsapp Logo">
-            <img src="img/Facebook.png" alt="Facebook Logo">
+            <a href="https://wa.link/gqtzgj">
+                <img src="img/whatsapp.png" alt="whatsapp Logo">
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61564360523875">
+                <img src="img/Facebook.png" alt="Facebook Logo">
+            </a>
             <a href="">
                 <img src="img/gmail.png" alt="Gmail Logo">
             </a>
@@ -291,6 +298,8 @@
                 <div class="form-group">
                     <label for="telefono">Teléfono:</label>
                     <input type="varchar" placeholder="Telefono" id="telefono" name="telefono" title="Hasta 10 caracteres" maxlength="10">
+                    <label for="whatsapp">WhatsApp:</label>
+                    <input type="text" placeholder="Nuevo link de whatsapp" id="whatsapp" name="whatsapp">
                 </div>
                 <div class="modal-buttons">
                     <button type="button" id="cancelButton" class="Cancel-button">Cancelar</button>
@@ -447,6 +456,23 @@
                     <button type="submit" class="publicarSave-button">Guardar</button>
                 </div>
             </form>
+        </div>
+    </div>
+
+    <!-- Modal para eliminar un cuarto -->
+    <div id="deleteRoomModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Eliminar Cuarto</h2>
+            <label for="selectRoom">Selecciona un cuarto:</label>
+            <select id="deleteRoom">
+                <option value="" selected disabled>Selecciona un cuarto</option>
+                <!-- Opciones cargadas dinámicamente -->
+            </select>
+            <div class="modal-actions">
+                <button id="cancelDeleteRoom" class="Cancel-button">Cancelar</button>
+                <button id="deleteRoomButton" class="Save-button">Aceptar</button>
+            </div>
         </div>
     </div>
 

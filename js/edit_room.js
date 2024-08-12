@@ -64,7 +64,9 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(response => response.json())
             .then(data => {
                 if (data.error) {
-                    console.error('Error del servidor:', data.error);
+                    console.log('Error del servidor:', data.error);
+                } else if (data.length === 0) {
+                    console.log('No hay cuartos publicados');
                 } else {
                     data.forEach(room => {
                         const option = document.createElement('option');
@@ -75,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             })
             .catch(error => console.error('Error en la solicitud:', error));
-    }
+    }        
 
     // Manejar el cambio de selección en la lista desplegable
     selectRoom.onchange = function() {

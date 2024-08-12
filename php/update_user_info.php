@@ -20,11 +20,12 @@ if (
     $apellidoP = $_POST['apellidoP'];
     $apellidoM = $_POST['apellidoM'];
     $telefono = $_POST['telefono'];
+    $whatsapp = $_POST['whatsapp'];
 
     // Actualizar la información del usuario en la base de datos
-    $sql = "UPDATE info_usuarios SET nombres = ?, apellidoP = ?, apellidoM = ?, telefono = ? WHERE id_usuario = ?";
+    $sql = "UPDATE info_usuarios SET nombres = ?, apellidoP = ?, apellidoM = ?, telefono = ?, whatsapp = ? WHERE id_usuario = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssssi", $nombres, $apellidoP, $apellidoM, $telefono, $id_usuario);
+    $stmt->bind_param("sssssi", $nombres, $apellidoP, $apellidoM, $telefono, $whatsapp, $id_usuario);
 
     if ($stmt->execute()) {
         echo "Información actualizada exitosamente";

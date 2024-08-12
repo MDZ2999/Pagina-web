@@ -24,7 +24,8 @@ $(document).ready(function() {
             apellidoM: $('#apellidoM').val(),
             correo: $('#correoRegistro').val(),
             contrasena: $('#contrasenaRegistro').val(),
-            telefono: $('#telefono').val()
+            telefono: $('#telefono').val(),
+            whatsapp: $('#whatsapp').val() || '' // Si está vacío, se envía como cadena vacía
         };
 
         // Verifica si el checkbox de términos y condiciones está marcado
